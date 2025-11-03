@@ -1,5 +1,4 @@
-//api for admin dashboard
-//  -----------------------------------------start -----------------------------------------------
+
 import { Injectable } from '@angular/core';
 
 export interface Bus {
@@ -44,12 +43,12 @@ export interface Contact {
 export class ApiService {
   // Mock data arrays (initial sample data)
   private buses: Bus[] = [
-    { id: 'b1', number: '12', capacity: 50, routeName: 'Downtown Express', status: 'active' },
-    { id: 'b2', number: '5', capacity: 40, routeName: 'Uptown Line', status: 'inactive' },
+    { id: 'b1', number: '12', capacity: 50, routeName: 'Arab Mall', status: 'active' },
+    { id: 'b2', number: '5', capacity: 40, routeName: 'Ramses', status: 'inactive' },
   ];
 
   private routes: RouteModel[] = [
-    { id: 'r1', busNumber: '12', routeName: 'Downtown Express', stops: ['Station A', 'Station B', 'Station C'], startTime: '06:00 AM', endTime: '11:00 PM', frequency: 'Every 15 minutes' },
+    { id: 'r1', busNumber: '12', routeName: 'Arab Mall', stops: ['Station A', 'Station B', 'Station C'], startTime: '06:00 AM', endTime: '11:00 PM', frequency: 'Every 15 minutes' },
   ];
 
   private contacts: Contact[] = [
@@ -149,5 +148,3 @@ export class ApiService {
     else this.tracking.push(t);
   }
 }
-//------------------------------------------------api for admin dashboard----------------------------------------------
-//  -----------------------------------------end ----------------------------------------------------------------------
