@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo">
@@ -7,15 +6,26 @@
             <span>BusTrack</span>
         </div>
 
-        <ul class="nav-links">
+        <button class="menu-toggle" (click)="isMenuOpen = !isMenuOpen">
+      <lucide-icon [name]="isMenuOpen ? 'x' : 'menu'" size="22"></lucide-icon>
+    </button>
+
+        <ul class="nav-links" [class.show]="isMenuOpen">
             @for (page of pages; track page.id) {
             <li>
-                <a href="javascript:void(0)" (click)="navigate(page.id)" [class.active]="currentPage === page.id" class="flex items-center gap-1">
+                <a href="javascript:void(0)" (click)="navigate(page.id); isMenuOpen = false" [class.active]="currentPage === page.id" class="flex items-center gap-1">
                     <lucide-icon [name]="page.icon" size="18"></lucide-icon>
                     {{ page.name }}
                 </a>
             </li>
             }
+
+            <li class="mobile-buttons">
+                @if (!isLoggedIn) {
+                <button class="sign-in-btn" (click)="signIn(); isMenuOpen = false">Sign In</button> } @else {
+                <button class="dashboard-btn" (click)="navigate('dashboard'); isMenuOpen = false">Dashboard</button>
+                <button class="sign-out-btn" (click)="signOut(); isMenuOpen = false">Sign Out</button> }
+            </li>
         </ul>
 
         <div class="nav-buttons">
