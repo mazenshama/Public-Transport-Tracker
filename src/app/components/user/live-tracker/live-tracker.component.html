@@ -1,1 +1,21 @@
-<p>live-tracker works!</p>
+<div class="tracker-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="search-box">
+      <input type="text" placeholder="Search bus..." />
+      <img src="../../../../assets/icons/search.png" alt="search" class="search-icon" />
+    </div>
+
+    <div class="bus-list">
+      <div class="bus-card" *ngFor="let bus of buses">
+        <p class="bus-title">Bus {{ bus.number }}</p>
+        <p class="bus-desc">{{ bus.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map area -->
+  <div class="map-container">
+    MAP
+  </div>
+</div>

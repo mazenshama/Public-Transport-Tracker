@@ -1,0 +1,170 @@
+/* Layout */
+.tracker-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 30px;
+  background-color: #f3f3f3;
+  min-height: 90vh;
+  box-sizing: border-box;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 28%;
+  background: #ffffff;
+  border: 2px solid #c9dafc;
+  border-radius: 22px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Search box */
+.search-box {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 42px;
+  padding: 10px 45px 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-box img.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Bus List */
+.bus-list {
+  max-height: 70vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-right: 5px;
+}
+
+/* Hide scrollbar */
+.bus-list::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Bus Card */
+.bus-card {
+  border: 2px solid #2f72ff;
+  border-radius: 12px;
+  padding: 12px 15px;
+  background-color: #ffffff;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.bus-card:hover {
+  background-color: #eef4ff;
+  transform: translateY(-3px);
+}
+
+.bus-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+}
+
+.bus-desc {
+  font-size: 14px;
+  margin: 2px 0 0;
+  color: #666;
+}
+
+/* Map Container */
+.map-container {
+  width: 65%;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  padding: 20px;
+  height: 80vh;
+}
+
+/* ✅ Responsive Design */
+
+/* Tablets & medium screens */
+@media (max-width: 1024px) {
+  .tracker-container {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .sidebar {
+    width: 35%;
+  }
+
+  .map-container {
+    width: 60%;
+  }
+}
+
+/* Mobile Devices - Map on Top */
+@media (max-width: 768px) {
+  .tracker-container {
+    flex-direction: column-reverse; /* Map above sidebar */
+    align-items: center;
+    gap: 25px;
+  }
+
+  .sidebar,
+  .map-container {
+    width: 90%;
+  }
+
+  .map-container {
+    height: 60vh;
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .tracker-container {
+    padding: 15px;
+  }
+
+  .sidebar,
+  .map-container {
+    width: 100%;
+  }
+
+  .map-container {
+    height: 50vh;
+  }
+
+  .bus-card {
+    padding: 10px;
+  }
+
+  .search-box input {
+    font-size: 13px;
+    height: 38px;
+  }
+}
