@@ -1,96 +1,186 @@
-<!Doctype html>
-<div class="dashboard-container">
-    <h1>Admin Dashboard</h1>
+<!DOCTYPE html>
+<div class="container py-4">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-0">Admin Dashboard</h3>
+            <p class="text-muted">Manage buses, routes, and monitor activity</p>
+        </div>
+    </div>
 
-    <!--  Section: Buses -->
-    <section class="card">
-        <h2>Buses</h2>
-        @if (buses.length > 0){
-        <table>
-            <thead>
-                <tr>
-                    <th>Bus Number</th>
-                    <th>Capacity</th>
-                    <th>Route</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
+    <!-- Stats -->
+    <div class="row g-3 mb-4">
+        @for (stat of [ {label:'Total Buses', value: stats.totalBuses, icon:'bi-truck'}, {label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up'}, {label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split'}, {label:'Messages', value:
+        stats.pendingContacts, icon:'bi-envelope'} ]; track stat.label) {
+        <div class="col-md-3 col-6">
+            <div class="card p-3 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">{{ stat.label }}</small>
+                        <h4 class="mb-0">{{ stat.value }}</h4>
+                    </div>
+                    <i class="bi {{ stat.icon }} fs-2 text-primary"></i>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-3" id="dashboardTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#buses">Buses</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#routes">Routes</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tracking">Tracking</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contacts">Messages</button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Buses -->
+        <div id="buses" class="tab-pane fade show active">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Bus Fleet</h5>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBusModal">+ Add Bus</button>
+            </div>
+
+            <div class="row g-3">
                 @for (bus of buses; track bus.id) {
-                <tr>
-                    <td>{{ bus.number }}</td>
-                    <td>{{ bus.capacity }}</td>
-                    <td>{{ bus.routeName }}</td>
-                    <td>{{ bus.status }}</td>
-                </tr>
+                <div class="col-md-4">
+                    <div class="card p-3 shadow-sm">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <div class="fw-semibold">Bus {{ bus.number }}</div>
+                                <span class="badge bg-{{ bus.status === 'active' ? 'success' : 'secondary' }}">{{ bus.status }}</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger" (click)="deleteBus(bus.id)">Delete</button>
+                        </div>
+                        <div class="text-muted">Capacity: {{ bus.capacity }}</div>
+                        @if (bus.routeName) {
+                        <div class="text-muted">Route: {{ bus.routeName }}</div>
+                        }
+                    </div>
+                </div>
                 }
-            </tbody>
-        </table>
-        } @else {
-        <p>No buses available</p>
-        }
-    </section>
+            </div>
 
-    <!--  Section: Routes -->
-    <section class="card">
-        <h2>Routes</h2>
-        @if (routes.length > 0){
-        <table>
-            <thead>
-                <tr>
-                    <th>Route Name</th>
-                    <th>Bus Number</th>
-                    <th>Number of Stops</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                </tr>
-            </thead>
-            <tbody>
+            @if (buses.length === 0) {
+            <div class="text-center text-muted py-4">No buses added yet.</div>
+            }
+        </div>
+
+        <!-- Routes -->
+        <div id="routes" class="tab-pane fade">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Routes</h5>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRouteModal">+ Add Route</button>
+            </div>
+
+            <div class="list-group">
                 @for (route of routes; track route.id) {
-                <tr>
-                    <td>{{ route.routeName }}</td>
-                    <td>{{ route.busNumber }}</td>
-                    <td>{{ route.stops.length }}</td>
-                    <td>{{ route.startTime }}</td>
-                    <td>{{ route.endTime }}</td>
-                </tr>
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="fw-semibold">{{ route.routeName }}</div>
+                            <small class="text-muted">Bus {{ route.busNumber }} • {{ route.startTime }} - {{ route.endTime }}</small>
+                            <div class="text-muted">Stops: {{ route.stops.join(' → ') }}</div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger" (click)="deleteRoute(route.id)">Delete</button>
+                    </div>
+                </div>
                 }
-            </tbody>
-        </table>
-        } @else {
-        <p>No routes available</p>
-        }
-    </section>
+            </div>
 
-    <!--  Section: Tracking -->
-    <section class="card">
-        <h2>Bus Tracking</h2>
-        @if (tracking.length > 0) {
-        <ul>
-            @for (t of tracking; track t.busId) {
-            <li>
-                Bus ID: {{ t.busId }} | Location: ({{ t.latitude }}, {{ t.longitude }}) | Heading: {{ t.heading }}° | Time: {{ t.timestamp | date:'short' }}
-            </li>
+            @if (routes.length === 0) {
+            <div class="text-center text-muted py-4">No routes added yet.</div>
             }
-        </ul>
-        } @else {
-        <p>No tracking data available</p>
-        }
-    </section>
+        </div>
 
-    <!--  Section: Contacts -->
-    <section class="card">
-        <h2>Messages</h2>
-        @if (contacts.length > 0) {
-        <ul>
-            @for (c of contacts; track c.id) {
-            <li>
-                <strong>{{ c.name }}</strong> ({{ c.email }}) - {{ c.subject }}<br> {{ c.message }}
-            </li>
+        <!-- Tracking -->
+        <div id="tracking" class="tab-pane fade">
+            <h5 class="mb-3">Tracking</h5>
+            <div class="row g-3">
+                @for (t of tracking; track t.busId) {
+                <div class="col-md-6">
+                    <div class="card p-3 shadow-sm">
+                        <div class="fw-semibold mb-2">Bus {{ t.busId }}</div>
+                        <div class="small text-muted">
+                            <div>Latitude: {{ t.latitude }}</div>
+                            <div>Longitude: {{ t.longitude }}</div>
+                            <div>Last Update: {{ t.timestamp }}</div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            @if (tracking.length === 0) {
+            <div class="text-center text-muted py-4">No tracking data.</div>
             }
-        </ul>
-        } @else {
-        <p>No messages available</p>
-        }
-    </section>
+        </div>
+
+        <!-- Contacts -->
+        <div id="contacts" class="tab-pane fade">
+            <h5>Messages</h5>
+            <div class="list-group">
+                @for (c of contacts; track c.email) {
+                <div class="list-group-item">
+                    <div class="fw-semibold">{{ c.name }}</div>
+                    <div class="small text-muted">{{ c.email }}</div>
+                    <div class="mt-1">{{ c.message }}</div>
+                </div>
+                }
+            </div>
+
+            @if (contacts.length === 0) {
+            <div class="text-center text-muted py-4">No messages yet.</div>
+            }
+        </div>
+    </div>
+
+    <!-- Add Bus Modal -->
+    <div class="modal fade" id="addBusModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Add Bus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control mb-2" placeholder="Bus Number" [(ngModel)]="newBus.number" />
+                    <input class="form-control mb-2" placeholder="Capacity" type="number" [(ngModel)]="newBus.capacity" />
+                    <input class="form-control mb-3" placeholder="Route Name" [(ngModel)]="newBus.routeName" />
+                    <button class="btn btn-primary w-100" (click)="addBus()" data-bs-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Route Modal -->
+    <div class="modal fade" id="addRouteModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Add Route</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control mb-2" placeholder="Bus Number" [(ngModel)]="newRoute.busNumber" />
+                    <input class="form-control mb-2" placeholder="Route Name" [(ngModel)]="newRoute.routeName" />
+                    <input class="form-control mb-2" placeholder="Stops (comma separated)" [(ngModel)]="newRoute.stops" />
+                    <input class="form-control mb-2" placeholder="Start Time" [(ngModel)]="newRoute.startTime" />
+                    <input class="form-control mb-2" placeholder="End Time" [(ngModel)]="newRoute.endTime" />
+                    <input class="form-control mb-3" placeholder="Frequency" [(ngModel)]="newRoute.frequency" />
+                    <button class="btn btn-primary w-100" (click)="addRoute()" data-bs-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<hr class="my-5" />
