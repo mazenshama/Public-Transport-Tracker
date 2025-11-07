@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-//  استيراد كل المكونات (الصفحات)
 import { HomeComponent } from './components/user/home/home.component';
 import { LiveTrackerComponent } from './components/user/live-tracker/live-tracker.component';
 import { RoutingComponent } from './components/user/routing/routing.component';
@@ -10,7 +9,6 @@ import { DriverDashboardComponent } from './components/driver/driver-dashboard/d
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 
-//  تعريف كل المسارات
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
   { path: 'live-tracker', component: LiveTrackerComponent, title: 'Live Tracker' },
@@ -21,6 +19,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, title: 'login-Authentication' },
   { path: 'Register', component: RegisterComponent, title: 'Register-Authentication' },
 
-  //  أي صفحة مش موجودة → رجع المستخدم للرئيسية
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

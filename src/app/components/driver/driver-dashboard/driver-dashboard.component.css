@@ -1,0 +1,45 @@
+/* Styles بسيطة لكل الـ dashboard */
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.text-slate-900 {
+    color: #0f172a;
+}
+
+.text-slate-600 {
+    color: #475569;
+}
+
+.text-slate-500 {
+    color: #6b7280;
+}
+
+.bg-blue-50 {
+    background-color: #eff6ff;
+}
+
+.border-blue-200 {
+    border-color: #bfdbfe;
+}
+
+.bg-green-50 {
+    background-color: #ecfdf5;
+}
+
+.border-green-200 {
+    border-color: #bbf7d0;
+}
+
+.bg-yellow-50 {
+    background-color: #fef3c7;
+}
+
+.border-yellow-200 {
+    border-color: #fde68a;
+}

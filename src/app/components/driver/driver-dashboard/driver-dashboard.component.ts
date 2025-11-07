@@ -1,12 +1,129 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, effect } from '@angular/core';
+import { ApiService, Bus, Station, LocationData } from '../../../../service/api.service-driver';
+import { AuthService, User } from '../../../../service/auth.service-driver';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-driver-dashboard',
-  standalone: true,
-  imports: [],
   templateUrl: './driver-dashboard.component.html',
-  styleUrl: './driver-dashboard.component.css'
+  styleUrls: ['./driver-dashboard.component.css'],
+  imports: [CommonModule, FormsModule],
+  standalone: true
 })
-export class DriverDashboardComponent {
+export class DriverDashboardComponent implements OnInit, OnDestroy {
+  buses = signal<Bus[]>([]);
+  selectedBus = signal('');
+  currentBus = signal<Bus | null>(null);
+  isTracking = signal(false);
+  issueType = signal('');
+  issueDescription = signal('');
+  location = signal<LocationData | null>(null);
+  availableBuses = signal<Bus[]>([]);
+  user = signal<User | null>(null);
 
+  private watchId: number | null = null;
+
+  constructor(private apiService: ApiService, private authService: AuthService) {
+    effect(() => {
+      this.availableBuses.set(this.buses().filter(b => b.status !== 'active' && b.status !== 'out-of-service'));
+    });
+
+    effect(() => {
+      this.user.set(this.authService.getUser());
+    });
+  }
+
+  ngOnInit(): void {
+    this.user.set(this.authService.getUser());
+    this.fetchBuses();
+    this.startLocationTracking();
+  }
+
+  ngOnDestroy(): void {
+    this.stopLocationTracking();
+  }
+
+  fetchBuses(): void {
+    this.apiService.getBuses().subscribe(res => {
+      this.buses.set(res.buses);
+      const activeBus = res.buses.find(b => b.currentDriverId === this.user()?.id && b.status === 'active');
+      if (activeBus) {
+        this.currentBus.set(activeBus);
+        this.selectedBus.set(activeBus.id);
+        this.isTracking.set(true);
+      }
+    });
+  }
+
+  handleStartTrip(): void {
+    if (!this.selectedBus()) return;
+    const driverId = this.user()?.id || 'driver-001';
+    this.apiService.startTrip(this.selectedBus(), driverId).subscribe(() => {
+      this.fetchBuses();
+      this.isTracking.set(true);
+      alert('Trip started');
+    });
+  }
+
+  handleEndTrip(): void {
+    if (!this.currentBus()) return;
+    this.apiService.endTrip(this.currentBus()!.id).subscribe(() => {
+      this.currentBus.set(null);
+      this.isTracking.set(false);
+      this.selectedBus.set('');
+      alert('Trip ended');
+      this.fetchBuses();
+    });
+  }
+
+  handleReportIssue(): void {
+    if (!this.currentBus() || !this.issueType() || !this.issueDescription()) return;
+    this.apiService.reportIssue(this.currentBus()!.id, this.issueType(), this.issueDescription()).subscribe(() => {
+      alert('Issue reported. Bus out-of-service.');
+      this.currentBus.set(null);
+      this.isTracking.set(false);
+      this.issueType.set('');
+      this.issueDescription.set('');
+      this.fetchBuses();
+    });
+  }
+
+  private startLocationTracking(): void {
+    if (!navigator.geolocation) return;
+
+    effect(() => {
+      if (this.isTracking() && this.currentBus()) {
+        this.watchId = navigator.geolocation.watchPosition(pos => {
+          const { latitude, longitude, heading } = pos.coords;
+          this.location.set({ lat: latitude, lng: longitude });
+
+          // تحديث الموقع في الـ backend
+          this.apiService.updateLocation(this.currentBus()!.id, latitude, longitude, heading || 0)
+            .subscribe();
+
+          // التحقق من المحطات
+          this.checkStations(latitude, longitude);
+        }, e => console.error(e), { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 });
+      }
+    });
+  }
+
+  private stopLocationTracking(): void {
+    if (this.watchId !== null) navigator.geolocation.clearWatch(this.watchId);
+  }
+
+  private checkStations(lat: number, lng: number) {
+    const bus = this.currentBus();
+    if (!bus?.stations) return;
+
+    const threshold = 0.0005;
+    bus.stations.forEach(s => {
+      if (!s.reached &&
+          Math.abs(s.lat - lat) < threshold &&
+          Math.abs(s.lng - lng) < threshold) {
+        this.apiService.recordStation(bus.id, s.name).subscribe();
+      }
+    });
+  }
 }

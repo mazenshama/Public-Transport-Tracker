@@ -11,13 +11,11 @@ import { ApiService, Bus, RouteModel, Contact, Tracking } from '../../../../serv
   imports: [CommonModule, FormsModule, DatePipe],
 })
 export class AdminDashboardComponent implements OnInit {
-  // بيانات عامة
   buses: Bus[] = [];
   routes: RouteModel[] = [];
   contacts: Contact[] = [];
   tracking: Tracking[] = [];
 
-  // الإحصائيات
   stats = {
     totalBuses: 0,
     activeBuses: 0,
@@ -25,13 +23,11 @@ export class AdminDashboardComponent implements OnInit {
     pendingContacts: 0,
   };
 
-  // كائنات الإدخال
   newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
   newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
 
   constructor(private api: ApiService) {}
 
-  // جلب البيانات من السيرفر
   async ngOnInit() {
     try {
       const busesData = await this.api.getBuses();
@@ -50,7 +46,6 @@ export class AdminDashboardComponent implements OnInit {
     } catch {
       console.warn(' API offline — using mock data');
 
-      // بيانات تجريبية
       this.buses = [
         { id: '1', number: '15A', capacity: 40, routeName: 'Downtown', status: 'active' },
         { id: '2', number: '22B', capacity: 35, routeName: 'Airport', status: 'inactive' },
@@ -84,7 +79,6 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  // تحديث الإحصائيات
   updateStats() {
     this.stats = {
       totalBuses: this.buses.length,
@@ -94,7 +88,6 @@ export class AdminDashboardComponent implements OnInit {
     };
   }
 
-  // إضافة حافلة جديدة
   async addBus() {
     if (!this.newBus.number || !this.newBus.capacity) return;
 
@@ -110,7 +103,6 @@ export class AdminDashboardComponent implements OnInit {
     this.updateStats();
   }
 
-  // حذف حافلة
   async deleteBus(busId: string) {
     try {
       await this.api.deleteBus(busId);
@@ -122,7 +114,6 @@ export class AdminDashboardComponent implements OnInit {
     this.updateStats();
   }
 
-  // إضافة مسار جديد
   async addRoute() {
     const stops = this.newRoute.stops.split(',').map((s) => s.trim());
     try {
@@ -137,7 +128,6 @@ export class AdminDashboardComponent implements OnInit {
     this.updateStats();
   }
 
-  // حذف مسار
   async deleteRoute(routeId: string) {
     try {
       await this.api.deleteRoute(routeId);

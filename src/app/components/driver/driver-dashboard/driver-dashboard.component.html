@@ -1,1 +1,203 @@
-<p>driver-dashboard works!</p>
+<div class="container py-4">
+  <!-- Header -->
+  <div class="mb-4">
+    <h1 class="display-6">Driver Dashboard</h1>
+    <p class="text-secondary">
+      Welcome, {{ user()?.name || "Driver" }}! Manage your trips and bus status.
+    </p>
+  </div>
+
+  <!-- Current Trip Status -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Current Trip Status</h5>
+
+      <ng-container *ngIf="currentBus(); else noActiveTrip">
+        <!-- Bus Info -->
+        <div class="card bg-primary bg-opacity-10 border-primary mb-3">
+          <div
+            class="card-body d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <p class="mb-1 text-muted">Current Bus</p>
+              <h4 class="card-title mb-0">Bus {{ currentBus()?.number }}</h4>
+              <ng-container *ngIf="currentBus()?.routeName">
+                <p class="mb-0">Route: {{ currentBus()?.routeName }}</p>
+              </ng-container>
+            </div>
+            <span class="badge bg-success">Active Trip</span>
+          </div>
+        </div>
+
+        <!-- Location Display -->
+        <ng-container *ngIf="location(); else noLocation">
+          <div class="card bg-success bg-opacity-10 border-success mb-3">
+            <div class="card-body d-flex align-items-start">
+              <svg
+                class="bi bi-geo-alt-fill me-2"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                <path d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+              </svg>
+              <div>
+                <p class="mb-1 text-muted">Current Location</p>
+                <p class="mb-0">
+                  {{ location()!.lat.toFixed(6) }},
+                  {{ location()!.lng.toFixed(6) }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noLocation>
+          <div class="alert alert-warning py-2 mb-3">
+            Location not yet available. Ensure location services are enabled.
+          </div>
+        </ng-template>
+
+        <!-- Tracking Status -->
+        <div class="alert alert-light d-flex align-items-center mb-3">
+          <span
+            class="spinner-grow spinner-grow-sm text-success me-2"
+            *ngIf="isTracking()"
+          ></span>
+          <span>{{
+            isTracking() ? "Live tracking active" : "Tracking paused"
+          }}</span>
+        </div>
+
+        <!-- Report Issue -->
+        <div class="mb-3">
+          <h6>Report Issue</h6>
+          <div class="mb-2">
+            <label for="issueType" class="form-label">Issue Type</label>
+            <select [(ngModel)]="issueType" id="issueType" class="form-select">
+              <option value="">Select an issue type</option>
+              <option value="mechanical">Mechanical Failure</option>
+              <option value="electrical">Electrical Issue</option>
+              <option value="accident">Accident</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="issueDesc" class="form-label">Description</label>
+            <textarea
+              [(ngModel)]="issueDescription"
+              id="issueDesc"
+              class="form-control"
+              rows="3"
+              placeholder="Describe the issue in detail..."
+            ></textarea>
+          </div>
+          <button
+            (click)="handleReportIssue()"
+            class="btn btn-outline-warning w-100 mb-2"
+          >
+            Report Issue & Mark Bus Out of Service
+          </button>
+        </div>
+
+        <!-- End Trip Button -->
+        <button (click)="handleEndTrip()" class="btn btn-danger w-100">
+          End Trip
+        </button>
+      </ng-container>
+
+      <ng-template #noActiveTrip>
+        <div class="text-center py-4 text-secondary">
+          <div class="mb-2">
+            <i class="bi bi-truck display-4"></i>
+          </div>
+          <p class="mb-1 fw-medium">No active trip</p>
+          <p>Select a bus below to start your trip</p>
+
+          <div class="mb-2">
+            <label for="selectBus" class="form-label">Select Bus</label>
+            <select
+              [(ngModel)]="selectedBus"
+              id="selectBus"
+              class="form-select mb-2"
+            >
+              <option value="">Choose a bus</option>
+              <ng-container *ngIf="availableBuses().length > 0; else noBuses">
+                <option *ngFor="let bus of availableBuses()" [value]="bus.id">
+                  Bus {{ bus.number }}
+                  <ng-container *ngIf="bus.routeName"
+                    >- {{ bus.routeName }}</ng-container
+                  >
+                </option>
+              </ng-container>
+              <ng-template #noBuses>
+                <option disabled>No buses available</option>
+              </ng-template>
+            </select>
+          </div>
+
+          <button
+            (click)="handleStartTrip()"
+            [disabled]="!selectedBus() || availableBuses().length === 0"
+            class="btn btn-success w-100"
+          >
+            Start Trip
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Bus Fleet Status -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Bus Fleet Status</h5>
+      <ng-container *ngIf="buses().length > 0; else noBuses">
+        <div class="row g-3">
+          <div class="col-12 col-md-6" *ngFor="let bus of buses()">
+            <div
+              class="d-flex justify-content-between align-items-center border rounded p-2"
+            >
+              <div>Bus {{ bus.number }}</div>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': bus.status === 'active',
+                  'bg-danger': bus.status === 'out-of-service',
+                  'bg-secondary':
+                    bus.status !== 'active' && bus.status !== 'out-of-service'
+                }"
+                >{{ bus.status }}</span
+              >
+            </div>
+            <div *ngIf="bus.routeName" class="text-muted small">
+              Route: {{ bus.routeName }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noBuses>
+        <div class="text-center py-3 text-secondary">
+          No buses in the system
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="card bg-light border mb-4">
+    <div class="card-body">
+      <h6 class="card-title">Driver Instructions</h6>
+      <ul class="mb-0">
+        <li>
+          Select your bus from the dropdown and click "Start Trip" to begin
+        </li>
+        <li>Your location will be tracked automatically during the trip</li>
+        <li>Click "End Trip" when you complete your route</li>
+        <li>Report any issues immediately using the issue report form</li>
+        <li>Ensure location services are enabled on your device</li>
+      </ul>
+    </div>
+  </div>
+</div>
