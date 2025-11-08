@@ -1,4 +1,4 @@
-import { AuthServices } from './../../../../../Services/auth.service';
+import { AuthServices } from '../../../../../Services/auth.service'; 
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup,Validators,FormControl } from '@angular/forms';
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  //  constructor( private _AuthServices:AuthServices){}
+   constructor( private _AuthServices:AuthServices){}
 regForm: FormGroup = new FormGroup({
     name: new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required,Validators.email]),
@@ -23,13 +23,13 @@ regForm: FormGroup = new FormGroup({
   })
 
   SignUp(){
-    // if(this.regForm.valid){
-    //    this._AuthServices.serLogIn(this.regForm.value).subscribe({
-    //   next:(res)=>{
-    //         console.log(res);
+    if(this.regForm.valid){
+       this._AuthServices.serLogIn(this.regForm.value).subscribe({
+      next:(res)=>{
+            console.log(res);
 
-    //   }
-    // })
-    // }
+      }
+    })
+    }
   }
 }

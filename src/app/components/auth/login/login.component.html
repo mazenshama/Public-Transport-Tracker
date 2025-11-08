@@ -9,7 +9,7 @@
       <button class="toggle-button1" routerLink="/register">Sign Up</button>
       <button class="toggle-button2" routerLink="/login">Sign In</button>
     </div>
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="logIn()">
       <label class="label">Email</label>
       <input type="email" formControlName="email" class="form-control"   placeholder="example@gmail.com">
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="alert alert-danger" role="alert">
