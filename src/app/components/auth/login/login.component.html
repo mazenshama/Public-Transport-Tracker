@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="login-con">
+  <div class="login-card">
+   <div class="login-icon">
+      <i class="fa-solid fa-lg fa-bus-side"></i>
+    </div>  
+    <h4 class="login-title">BusTrack</h4>
+    <p class="login-subtitle">Sign in to access your dashboard</p>
+    <div class="signInUp-buttons">
+      <button class="toggle-button1" routerLink="/register">Sign Up</button>
+      <button class="toggle-button2" routerLink="/login">Sign In</button>
+    </div>
+    <form [formGroup]="loginForm">
+      <label class="label">Email</label>
+      <input type="email" formControlName="email" class="form-control"   placeholder="example@gmail.com">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="alert alert-danger" role="alert">
+          Invalid email format or Email not found
+      </div>
+      <label class="label">Password</label>
+      <input type="password" formControlName="password" class="form-control"  placeholder="Enter the pass">
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched " class="alert alert-danger" role="alert">
+        <p  *ngIf="loginForm.get('password')?.getError('required')">Password is required</p>
+        <p  *ngIf="loginForm.get('password')?.getError('pattern')">Password  must contain at least eight characters, at least one number and both lower and uppercase letters and special characters.</p>
+      </div>
+      <button class="signIn-button">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        Sign In
+      </button>
+    </form>
+    <p class="line"></p>
+    <div class="instrucion-con">
+      <p class="fw-bold">Getting Started:</p>
+      <div class="ins-desc">
+       <p class="instructions">1. Create your account and select your role (Admin/Driver)</p> 
+       <p  class="instructions">2.Use a 6+ character password to sign in automatically</p>
+       <p  class="instructions">3. Password must be at least 6 characters</p> 
+       <p  class="instructions">4. You'l be automatically signed in after signup</p>
+      </div>
+      <p class="alert">If "Invalid credentials" appears, check that you have registered an account first.</p>
+    </div>
+  </div>
+</div>
