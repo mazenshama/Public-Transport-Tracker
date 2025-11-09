@@ -8,7 +8,7 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
@@ -20,7 +20,7 @@ export class AuthService {
     // Initialize with mock user for demo
     const mockUser: User = {
       id: 'driver-001',
-      name: 'John Driver'
+      name: 'John Driver',
     };
     this.setUser(mockUser);
   }
