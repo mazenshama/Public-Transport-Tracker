@@ -1,27 +1,51 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './components/user/home/home.component';
-import { LiveTrackerComponent } from './components/user/live-tracker/live-tracker.component';
-import { RoutingComponent } from './components/user/routing/routing.component';
-import { ContactComponent } from './components/user/contact/contact.component';
-import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import { DriverDashboardComponent } from './components/driver/driver-dashboard/driver-dashboard.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-
 export const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  {path:'login',component:LoginComponent, title: 'login' },
-  {path:'register',component:RegisterComponent, title: 'register'},
-  
-  { path: 'home', component: HomeComponent, title: 'Home' },
-  { path: 'live-tracker', component: LiveTrackerComponent, title: 'Live Tracker' },
-  { path: 'routes', component: RoutingComponent, title: 'Routes' },
-  { path: 'contact', component: ContactComponent, title: 'Contact Us' },
-  { path: 'admin', component: AdminDashboardComponent, title: 'Admin Dashboard' },
-  { path: 'driver', component: DriverDashboardComponent, title: 'Driver Dashboard' },
+  {
+    path: 'login',
+    loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent),
+    title: 'Login'
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./components/auth/register/register.component').then(m => m.RegisterComponent),
+    title: 'Register'
+  },
 
+  {
+    path: 'home',
+    loadComponent: () => import('./components/user/home/home.component').then(m => m.HomeComponent),
+    title: 'Home'
+  },
+  {
+    path: 'live-tracker',
+    loadComponent: () => import('./components/user/live-tracker/live-tracker.component').then(m => m.LiveTrackerComponent),
+    title: 'Live Tracker'
+  },
+  {
+    path: 'routes',
+    loadComponent: () => import('./components/user/routing/routing.component').then(m => m.RoutingComponent),
+    title: 'Routes'
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./components/user/contact/contact.component').then(m => m.ContactComponent),
+    title: 'Contact Us'
+  },
+
+  {
+    path: 'admin',
+    loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent),
+    title: 'Admin Dashboard'
+  },
+
+  {
+    path: 'driver',
+    loadComponent: () => import('./components/driver/driver-dashboard/driver-dashboard.component').then(m => m.DriverDashboardComponent),
+    title: 'Driver Dashboard'
+  },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
