@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  isconPasswordValid:boolean=false;
    constructor( private _AuthServices:AuthServices){}
 regForm: FormGroup = new FormGroup({
     name: new FormControl('',[Validators.required]),
@@ -30,6 +31,15 @@ regForm: FormGroup = new FormGroup({
 
       }
     })
+    }
+  }
+  matchPassword(){
+    if(this.regForm.value.password == this.regForm.value.confirmPassword){
+      this.isconPasswordValid=true;
+    }
+    else{
+     this.isconPasswordValid=false;
+
     }
   }
 }

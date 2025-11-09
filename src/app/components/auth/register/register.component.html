@@ -22,17 +22,17 @@
           Invalid email format or Email not found
       </div>
       <label class="label">Password</label>
-      <input type="password" formControlName="password" class="form-control"  placeholder="Enter the pass">
+      <input (keyup)="matchPassword()"  type="password" formControlName="password" class="form-control"  placeholder="Enter the pass">
       <div *ngIf="regForm.get('password')?.invalid && regForm.get('password')?.touched " class="alert alert-danger" role="alert">
         <p  *ngIf="regForm.get('password')?.getError('required')">Password is required</p>
         <p  *ngIf="regForm.get('password')?.getError('pattern')">Password  must contain at least eight characters, at least one number and both lower and uppercase letters and special characters.</p>
       </div>
 
        <label class="label">Confirm Password</label>
-      <input type="password" formControlName="confirmPassword" class="form-control"  placeholder="Confirm password">
-      <div *ngIf="regForm.get('password')?.invalid && regForm.get('password')?.touched " class="alert alert-danger" role="alert">
-        <p  *ngIf="regForm.get('confirmPassword')?.getError('required')">Password is required</p>
-        <p  *ngIf="regForm.get('confirmPassword')?.getError('pattern')">Confirm password  must contain at least eight characters, at least one number and both lower and uppercase letters and special characters.</p>
+      <input (keyup)="matchPassword()" type="password" formControlName="confirmPassword" class="form-control"  placeholder="Confirm password">
+      <div *ngIf="!isconPasswordValid && regForm.get('confirmPassword')?.touched " class="alert alert-danger" role="alert">
+        <p>Password is not match</p>
+      
       </div>
 
       <label class="label">Role</label>
