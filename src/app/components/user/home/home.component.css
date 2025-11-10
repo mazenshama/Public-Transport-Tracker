@@ -17,7 +17,8 @@
 
 .subtitle{
   color: rgb(102, 102, 102);
-  margin: 20px 315px 48px 315px;
+  margin: 20px auto 48px auto;
+  max-width: 670px;
   
 }
 
@@ -75,7 +76,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: auto auto 20px auto;
   background-color: #155dfc;
   color: white;
   text-decoration: none;
