@@ -2,20 +2,40 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="search-box">
-      <input type="text" placeholder="Search bus..." />
+      <input 
+        type="text" 
+        placeholder="Search bus..." 
+        [(ngModel)]="searchQuery"
+      />
       <img src="../../../../assets/icons/search.png" alt="search" class="search-icon" />
     </div>
 
+    @if (isLoading) {
+    <div class="loading-message">Loading buses...</div>
+    } @else if (errorMessage) {
+    <div class="error-message">{{ errorMessage }}</div>
+    } @else {
     <div class="bus-list">
-      <div class="bus-card" *ngFor="let bus of buses">
+      @if (filteredBuses.length === 0) {
+      <div class="no-buses">No buses found</div>
+      } @else {
+      <div class="bus-card" *ngFor="let bus of filteredBuses">
         <p class="bus-title">Bus {{ bus.number }}</p>
-        <p class="bus-desc">{{ bus.description }}</p>
+        <p class="bus-desc">{{ getBusDescription(bus) }}</p>
+        @if (hasLocation(bus)) {
+        <span class="location-badge">📍 Live Location</span>
+        }
       </div>
+      }
     </div>
+    }
   </div>
 
   <!-- Map area -->
   <div class="map-container">
-    MAP
+    <div class="map-placeholder">
+      <p>Map Integration</p>
+      <p class="map-note">Active buses with location data: {{ activeBusesWithLocationCount }}</p>
+    </div>
   </div>
 </div>
