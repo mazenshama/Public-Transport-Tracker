@@ -9,7 +9,7 @@
 
     <!-- Stats -->
     <div class="row g-3 mb-4">
-        @for (stat of [ {label:'Total Buses', value: stats.totalBuses, icon:'bi-truck'}, {label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up'}, {label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split'}, {label:'Messages', value:
+        @for (stat of [ {label:'Total Buses', value: stats.totalBuses, icon:'bi-bus-front'}, {label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up'}, {label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split'}, {label:'Messages', value:
         stats.pendingContacts, icon:'bi-envelope'} ]; track stat.label) {
         <div class="col-md-3 col-6">
             <div class="card p-3 shadow-sm">
