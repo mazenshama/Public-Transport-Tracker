@@ -93,19 +93,31 @@
   color: #666;
 }
 
-/* Map Container */
+/* Map Container - FIXED */
 .map-container {
-  width: 65%;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #555;
-  padding: 20px;
+  flex: 1; /* Changed from width: 65% */
   height: 80vh;
+  background: #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  min-height: 400px;
+}
+
+/* Map itself - FIXED */
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure Leaflet containers have proper dimensions */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background: #e0e0e0;
 }
 
 /* ✅ Responsive Design */
@@ -123,13 +135,14 @@
 
   .map-container {
     width: 60%;
+    height: 75vh;
   }
 }
 
 /* Mobile Devices - Map on Top */
 @media (max-width: 768px) {
   .tracker-container {
-    flex-direction: column-reverse; /* Map above sidebar */
+    flex-direction: column-reverse;
     align-items: center;
     gap: 25px;
   }
@@ -141,6 +154,7 @@
 
   .map-container {
     height: 60vh;
+    min-height: 300px;
   }
 }
 
@@ -157,6 +171,7 @@
 
   .map-container {
     height: 50vh;
+    min-height: 250px;
   }
 
   .bus-card {
