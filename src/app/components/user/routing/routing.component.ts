@@ -23,18 +23,19 @@ export class RoutingComponent implements OnInit{
     this.routes = res.routes;
   }
 
-  get filteredRoutes() {
-    if(!this.searchBusNumber && !this.searchByDestination){
+   get filteredRoutes() {
+    if (!this.searchBusNumber && !this.searchByDestination) {
       return this.routes;
     }
 
-    return this.routes.filter (r=>{
-      const matchBus = this.searchBusNumber? r.busNumber.toLocaleLowerCase().includes(this.searchBusNumber.toLocaleLowerCase()):false;
-
-      const matchDestination= this.searchByDestination? r.routeName.toLocaleLowerCase().includes(this.searchByDestination.toLocaleLowerCase()):false;
-      
-      return matchBus || matchDestination;
-    })
+    return this.routes.filter(r => {
+      const matchBus =
+        !this.searchBusNumber ||
+        r.busNumber.toLowerCase().includes(this.searchBusNumber.toLowerCase());
+      const matchDestination =
+        !this.searchByDestination ||
+        r.routeName.toLowerCase().includes(this.searchByDestination.toLowerCase());
+      return matchBus && matchDestination;
+    });
   }
 }
-
