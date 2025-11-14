@@ -1,159 +1,174 @@
-.routes-con,.filter-con{
-  width: 100%;
+.routes-con,
+.filter-con {
+    width: 100%;
 }
 
-.routes-con {
+
+/* .routes-con {
   position: relative;
   z-index: -1; 
+} */
+
+.title,
+.filter-con,
+.routes-card {
+    padding: 24px;
+    border: 1px solid rgb(236, 236, 236);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
 }
 
-.title,.filter-con,.routes-card{
- padding: 24px;
- border: 1px solid rgb(236, 236, 236);
- border-radius:16px;
- box-shadow: 0 2px 12px rgba(0,0,0,0.08);
- margin-bottom: 24px;
+.filter-con {
+    display: flex;
+    gap: 20px;
 }
 
-.filter-con{
-  display: flex;
-  gap: 20px;
-}
-
-.filter-bus,.filter-destination{
-      width: 50%;
-
+.filter-bus,
+.filter-destination {
+    width: 50%;
 }
 
 @media (max-width: 500px) {
-  .filter-con {
-      display: flex;
-
-    flex-wrap: wrap;
-    width: 100%;
-  }
+    .filter-con {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
 
-.input-with-icon{
-  position: relative;
-  display: inline-block;
+.input-with-icon {
+    position: relative;
+    display: inline-block;
 }
 
-.input-with-icon i{
+.input-with-icon i {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #90A1B9; 
+    color: #90A1B9;
     padding-right: 5px;
-
 }
 
 .input-with-icon input {
-  background-color: #F3F3F5;
-  padding: 6px 10px ;
-  padding-left: 38px;
-  border: 1px solid #f6f6f6;
-  border-radius: 32px;
+    background-color: #F3F3F5;
+    padding: 6px 10px;
+    padding-left: 38px;
+    border: 1px solid #f6f6f6;
+    border-radius: 32px;
 }
 
-.bus-icon{
-  background-color: #155dfc;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  margin-top: 4px;
+.bus-icon {
+    background-color: #155dfc;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    margin-top: 4px;
 }
 
-.route-details{
-  display: flex;
-  height: auto;
+.input-with-icon input:focus {
+    outline: none;
+    border: 1px solid #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+    transition: all 0.2s ease-in-out;
 }
 
-.bus-id{
-  font-size: 18px;
-  margin-bottom: 0;
+.input-with-icon input::placeholder {
+    color: #9ca3af;
+    transition: color 0.2s ease;
 }
 
-.bus-number{
-  font-size: 14px;
-  height: 23px;
-  font-weight: 600;
-  margin: 0px 16px;
-  background-color: #ECEEF2;
-  padding: 2px 10px 10px 10px;
-  border-radius: 10px;
+.input-with-icon input:focus::placeholder {
+    color: #cbd5e1;
 }
 
+.route-details {
+    display: flex;
+    height: auto;
+}
 
+.bus-id {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.bus-number {
+    font-size: 14px;
+    height: 23px;
+    font-weight: 600;
+    margin: 0px 16px;
+    background-color: #ECEEF2;
+    padding: 2px 10px 10px 10px;
+    border-radius: 10px;
+}
 
 .route-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .left-sec {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.right-sec{
-  display: flex;
-   margin-top: -40px;
+.right-sec {
+    display: flex;
+    margin-top: -40px;
 }
-
-
 
 .time {
-   display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-  color: #45556C;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: #45556C;
 }
 
-.stops{
-  display: flex;
-  flex-direction: column;
-  position: relative;
+.stops {
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-.stop{
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-  color: #454545;
-  margin-bottom:10px ;
+.stop {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    color: #454545;
+    margin-bottom: 10px;
 }
 
-.stop p{
-  margin-bottom: 0.1rem;
+.stop p {
+    margin-bottom: 0.1rem;
 }
 
-.circle{
-  width:16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid #2563eb;
+.circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #2563eb;
 }
 
 .circle.active {
-  background: #2563eb;
+    background: #2563eb;
 }
 
-.line{
-  position: absolute;
-  left: 7px;
-  top: 20px;
-  width:2px;
-  height:22px;
-  background-color: #2563eb;
+.line {
+    position: absolute;
+    left: 7px;
+    top: 20px;
+    width: 2px;
+    height: 22px;
+    background-color: #2563eb;
 }
