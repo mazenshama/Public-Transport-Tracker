@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F1BF543E-2E19-42C6-8E83-82A556018ED9}|Public-Transport-Tracker.Application\\Public-Transport-Tracker.Application.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.application\\services\\busservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\models\\requestmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\models\\requestmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -139,10 +143,6 @@
       "RelativeMoniker": "D:0:0:{B85C9ACD-B674-4C47-A6A4-2E022AC51385}|Public-Transport-Tracker.Domain\\Public-Transport-Tracker.Domain.csproj|solutionrelative:public-transport-tracker.domain\\entities\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1EBDB4BB-4305-4D9E-AF98-912B18DC438D}|Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj|solutionrelative:public-transport-tracker.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B85C9ACD-B674-4C47-A6A4-2E022AC51385}|Public-Transport-Tracker.Domain\\Public-Transport-Tracker.Domain.csproj|c:\\users\\7oda\\documents\\github\\public-transport-tracker\\public-transport-tracker\\public-transport-tracker.domain\\public-transport-tracker.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{B85C9ACD-B674-4C47-A6A4-2E022AC51385}|Public-Transport-Tracker.Domain\\Public-Transport-Tracker.Domain.csproj|solutionrelative:public-transport-tracker.domain\\public-transport-tracker.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -174,7 +174,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -182,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ContactController.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\ContactController.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Controllers\\ContactController.cs",
@@ -194,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "RequestModels.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Models\\RequestModels.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Models\\RequestModels.cs",
@@ -230,20 +230,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Program.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Program.cs",
               "ToolTip": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Program.cs",
               "RelativeToolTip": "Public-Transport-Tracker.APIs\\Program.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAqwFIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAqwFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T22:44:24.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T22:44:24.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application.Abstraction\\Services\\IAuthService.cs",
@@ -255,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\appsettings.json",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\appsettings.json",
@@ -263,23 +262,24 @@
               "RelativeToolTip": "Public-Transport-Tracker.APIs\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-10T21:36:03.993Z"
+              "WhenOpened": "2025-11-10T21:36:03.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Public-Transport-Tracker.APIs\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAYwEwBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwH4AAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T21:10:36.402Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DriverController.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\DriverController.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Controllers\\DriverController.cs",
@@ -291,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "BusController.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\BusController.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Controllers\\BusController.cs",
@@ -303,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.APIs\\Controllers\\AuthController.cs",
@@ -315,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "BusConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\Configs\\BusConfigurations.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\Configs\\BusConfigurations.cs",
@@ -327,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "RouteConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\Configs\\RouteConfigurations.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\Configs\\RouteConfigurations.cs",
@@ -339,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "StationConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\Configs\\StationConfigurations.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\Configs\\StationConfigurations.cs",
@@ -351,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "AdminConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\Configs\\AdminConfigurations.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\Configs\\AdminConfigurations.cs",
@@ -363,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DriverConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\Configs\\DriverConfigurations.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\Configs\\DriverConfigurations.cs",
@@ -375,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\Services\\AuthService.cs",
@@ -387,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "BusService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Services\\BusService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\Services\\BusService.cs",
@@ -399,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "RouteService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Services\\RouteService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\Services\\RouteService.cs",
@@ -411,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "AdminService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\Services\\AdminService.cs",
@@ -423,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "IRouteService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Services\\IRouteService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application.Abstraction\\Services\\IRouteService.cs",
@@ -435,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Services\\IAdminService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application.Abstraction\\Services\\IAdminService.cs",
@@ -447,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "IBuseService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Services\\IBuseService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application.Abstraction\\Services\\IBuseService.cs",
@@ -459,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "Station.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Entities\\Station.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Entities\\Station.cs",
@@ -471,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Entities\\Route.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Entities\\Route.cs",
@@ -483,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "Admin.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Entities\\Admin.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Entities\\Admin.cs",
@@ -495,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Driver.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Entities\\Driver.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Entities\\Driver.cs",
@@ -507,7 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Bus.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Entities\\Bus.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Entities\\Bus.cs",
@@ -519,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\UnitOfWork\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\UnitOfWork\\UnitOfWork.cs",
@@ -531,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Contracts\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Contracts\\IUnitOfWork.cs",
@@ -543,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "DriverService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Services\\DriverService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\Services\\DriverService.cs",
@@ -555,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IDriverService.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Services\\IDriverService.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application.Abstraction\\Services\\IDriverService.cs",
@@ -579,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Domain\\Contracts\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Domain\\Contracts\\IGenericRepository.cs",
@@ -591,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\GenericRepository\\GenericRepository.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\GenericRepository\\GenericRepository.cs",
@@ -603,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PublicTransportTrackerContext.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Data\\PublicTransportTrackerContext.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\Data\\PublicTransportTrackerContext.cs",
@@ -615,7 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Persistence\\DependencyInjection.cs",
@@ -639,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Public-Transport-Tracker.Application\\DependencyInjection.cs",

@@ -26,55 +26,47 @@ export class AdminDashboardComponent implements OnInit {
   newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
   newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
 
+  activeTab: string = 'buses';
+  showBusModal: boolean = false;
+  showRouteModal: boolean = false;
+
   constructor(private api: ApiService) {}
 
   async ngOnInit() {
     try {
-      const busesData = await this.api.getBuses();
+      // Load all data in parallel for better performance
+      const [busesData, routesData, contactsData, trackingData] = await Promise.all([
+        this.api.getBuses().catch(err => {
+          console.error('Error loading buses:', err);
+          return { buses: [] };
+        }),
+        this.api.getRoutes().catch(err => {
+          console.error('Error loading routes:', err);
+          return { routes: [] };
+        }),
+        this.api.getContacts().catch(err => {
+          console.error('Error loading contacts:', err);
+          return { contacts: [] };
+        }),
+        this.api.getAllTracking().catch(err => {
+          console.error('Error loading tracking:', err);
+          return { tracking: [] };
+        })
+      ]);
+
       this.buses = busesData?.buses || [];
-
-      const routesData = await this.api.getRoutes();
       this.routes = routesData?.routes || [];
-
-      const contactsData = await this.api.getContacts();
       this.contacts = contactsData?.contacts || [];
-
-      const trackingData = await this.api.getAllTracking();
       this.tracking = trackingData?.tracking || [];
 
       this.updateStats();
-    } catch {
-      console.warn(' API offline — using mock data');
-
-      this.buses = [
-        { id: '1', number: '15A', capacity: 40, routeName: 'Downtown', status: 'active' },
-        { id: '2', number: '22B', capacity: 35, routeName: 'Airport', status: 'inactive' },
-      ];
-      this.routes = [
-        {
-          id: '1',
-          busNumber: '15A',
-          routeName: 'Downtown',
-          stops: ['Stop 1', 'Stop 2'],
-          startTime: '8:00',
-          endTime: '17:00',
-          frequency: '30 min',
-        },
-      ];
-      this.contacts = [
-        {
-          id: '1',
-          name: 'Ali Ahmed',
-          message: 'Bus delayed',
-          email: 'ali@example.com',
-          submittedAt: new Date().toISOString(),
-        },
-      ];
-      this.tracking = [
-        { busId: '1', heading: 120, timestamp: new Date().toISOString() },
-        { busId: '2', heading: 90, timestamp: new Date().toISOString() },
-      ];
-
+    } catch (error) {
+      console.error('Error initializing admin dashboard:', error);
+      // Initialize with empty arrays instead of mock data
+      this.buses = [];
+      this.routes = [];
+      this.contacts = [];
+      this.tracking = [];
       this.updateStats();
     }
   }
@@ -89,53 +81,93 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   async addBus() {
-    if (!this.newBus.number || !this.newBus.capacity) return;
-
-    try {
-      await this.api.createBus(this.newBus);
-      const res = await this.api.getBuses();
-      this.buses = res.buses;
-    } catch {
-      this.buses.push({ ...this.newBus, id: (Math.random() * 1000).toFixed(0) });
+    if (!this.newBus.number || !this.newBus.capacity) {
+      alert('Please fill in bus number and capacity');
+      return;
     }
 
-    this.newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
-    this.updateStats();
+    try {
+      const response = await this.api.createBus(this.newBus);
+      if (response?.success) {
+        // Reload buses from server
+        const res = await this.api.getBuses();
+        this.buses = res.buses;
+        this.newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
+        this.showBusModal = false;
+        this.updateStats();
+      } else {
+        alert('Failed to create bus. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error adding bus:', error);
+      alert(error?.message || 'Failed to create bus. Please try again.');
+    }
   }
 
   async deleteBus(busId: string) {
-    try {
-      await this.api.deleteBus(busId);
-      const res = await this.api.getBuses();
-      this.buses = res.buses;
-    } catch {
-      this.buses = this.buses.filter((b) => b.id !== busId);
+    if (!confirm('Are you sure you want to delete this bus?')) {
+      return;
     }
-    this.updateStats();
+
+    try {
+      const response = await this.api.deleteBus(busId);
+      if (response?.success) {
+        // Reload buses from server
+        const res = await this.api.getBuses();
+        this.buses = res.buses;
+        this.updateStats();
+      } else {
+        alert('Failed to delete bus. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error deleting bus:', error);
+      alert(error?.message || 'Failed to delete bus. Please try again.');
+    }
   }
 
   async addRoute() {
-    const stops = this.newRoute.stops.split(',').map((s) => s.trim());
-    try {
-      await this.api.createRoute({ ...this.newRoute, stops });
-      const res = await this.api.getRoutes();
-      this.routes = res.routes;
-    } catch {
-      this.routes.push({ ...this.newRoute, stops, id: (Math.random() * 1000).toFixed(0) });
+    if (!this.newRoute.routeName || !this.newRoute.busNumber) {
+      alert('Please fill in route name and bus number');
+      return;
     }
 
-    this.newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
-    this.updateStats();
+    const stops = this.newRoute.stops ? this.newRoute.stops.split(',').map((s) => s.trim()) : [];
+    try {
+      const response = await this.api.createRoute({ ...this.newRoute, stops });
+      if (response?.success) {
+        // Reload routes from server
+        const res = await this.api.getRoutes();
+        this.routes = res.routes;
+        this.newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
+        this.showRouteModal = false;
+        this.updateStats();
+      } else {
+        alert('Failed to create route. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error adding route:', error);
+      alert(error?.message || 'Failed to create route. Please try again.');
+    }
   }
 
   async deleteRoute(routeId: string) {
-    try {
-      await this.api.deleteRoute(routeId);
-      const res = await this.api.getRoutes();
-      this.routes = res.routes;
-    } catch {
-      this.routes = this.routes.filter((r) => r.id !== routeId);
+    if (!confirm('Are you sure you want to delete this route?')) {
+      return;
     }
-    this.updateStats();
+
+    try {
+      const response = await this.api.deleteRoute(routeId);
+      if (response?.success) {
+        // Reload routes from server
+        const res = await this.api.getRoutes();
+        this.routes = res.routes;
+        this.updateStats();
+      } else {
+        alert('Failed to delete route. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error deleting route:', error);
+      alert(error?.message || 'Failed to delete route. Please try again.');
+    }
   }
 }

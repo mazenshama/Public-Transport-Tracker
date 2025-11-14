@@ -32,7 +32,7 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthServices {
-  private apiBaseUrl = environment.apiBaseUrl || 'https://localhost:7000'; 
+  private apiBaseUrl = environment.apiBaseUrl || 'https://localhost:7114'; 
 
   constructor(private _HttpClient: HttpClient) {}
 

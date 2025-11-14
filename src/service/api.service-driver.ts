@@ -137,7 +137,7 @@ interface ApiResponse<T> {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private apiUrl = environment.apiBaseUrl || 'https://localhost:7000';
+  private apiUrl = environment.apiBaseUrl || 'https://localhost:7114';
 
   constructor(private http: HttpClient) {}
 
