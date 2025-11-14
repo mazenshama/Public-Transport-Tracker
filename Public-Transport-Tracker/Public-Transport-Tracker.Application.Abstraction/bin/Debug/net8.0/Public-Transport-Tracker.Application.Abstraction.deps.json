@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Public-Transport-Tracker.Application.Abstraction/1.0.0": {
+        "dependencies": {
+          "Public-Transport-Tracker.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Public-Transport-Tracker.Application.Abstraction.dll": {}
+        }
+      },
+      "Public-Transport-Tracker.Domain/1.0.0": {
+        "runtime": {
+          "Public-Transport-Tracker.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Public-Transport-Tracker.Application.Abstraction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Public-Transport-Tracker.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

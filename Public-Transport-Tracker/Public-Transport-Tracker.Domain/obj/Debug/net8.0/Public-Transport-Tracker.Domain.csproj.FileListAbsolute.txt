@@ -1,0 +1,11 @@
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.deps.json
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.dll
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.pdb
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.AssemblyInfoInputs.cache
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.AssemblyInfo.cs
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.csproj.CoreCompileInputs.cache
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.dll
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\refint\Public-Transport-Tracker.Domain.dll
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.pdb
+E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\ref\Public-Transport-Tracker.Domain.dll
