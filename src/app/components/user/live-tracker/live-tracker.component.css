@@ -105,12 +105,13 @@
 }
 
 /* Map itself - FIXED */
-#map {
+#busMap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 /* Ensure Leaflet containers have proper dimensions */
@@ -118,6 +119,50 @@
   width: 100% !important;
   height: 100% !important;
   background: #e0e0e0;
+  border-radius: 12px;
+}
+
+/* Custom Bus Marker Styles */
+.custom-bus-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bus-marker-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bus-icon {
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.bus-number-badge {
+  background: #2f72ff;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-top: -5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
 }
 
 /* ✅ Responsive Design */

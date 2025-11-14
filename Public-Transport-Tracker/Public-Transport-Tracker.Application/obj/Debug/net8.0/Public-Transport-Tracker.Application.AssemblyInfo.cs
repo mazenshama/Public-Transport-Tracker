@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Public-Transport-Tracker.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75ef33064b914f7a70b036af7fa2b828b0b504bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5937f8e5e213ed45acaf30e3f475460451479b6c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Public-Transport-Tracker.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Public-Transport-Tracker.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

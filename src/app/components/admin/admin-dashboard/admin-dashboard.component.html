@@ -1,186 +1,223 @@
-<!DOCTYPE html>
-<div class="container py-4">
-    <div class="card mb-4 shadow-sm">
-        <div class="card-body">
-            <h3 class="card-title mb-0">Admin Dashboard</h3>
-            <p class="text-muted">Manage buses, routes, and monitor activity</p>
+<div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto space-y-6">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+            <p class="text-gray-600">Manage buses, routes, and monitor activity</p>
         </div>
-    </div>
 
-    <!-- Stats -->
-    <div class="row g-3 mb-4">
-        @for (stat of [ {label:'Total Buses', value: stats.totalBuses, icon:'bi-bus-front'}, {label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up'}, {label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split'}, {label:'Messages', value:
-        stats.pendingContacts, icon:'bi-envelope'} ]; track stat.label) {
-        <div class="col-md-3 col-6">
-            <div class="card p-3 shadow-sm">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <small class="text-muted">{{ stat.label }}</small>
-                        <h4 class="mb-0">{{ stat.value }}</h4>
+        <!-- Stats -->
+        <div class="row g-3 mb-4">
+            @for (stat of [ {label:'Total Buses', value: stats.totalBuses, icon:'bi-truck'}, {label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up'}, {label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split'}, {label:'Messages', value:
+            stats.pendingContacts, icon:'bi-envelope'} ]; track stat.label) {
+            <div class="col-md-3 col-6">
+                <div class="card p-3 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">{{ stat.label }}</small>
+                            <h4 class="mb-0">{{ stat.value }}</h4>
+                        </div>
+                        <i class="bi {{ stat.icon }} fs-2 text-primary"></i>
                     </div>
-                    <i class="bi {{ stat.icon }} fs-2 text-primary"></i>
                 </div>
             </div>
+            }
         </div>
-        }
-    </div>
 
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-3" id="dashboardTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#buses">Buses</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#routes">Routes</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tracking">Tracking</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contacts">Messages</button>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <!-- Buses -->
-        <div id="buses" class="tab-pane fade show active">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5>Bus Fleet</h5>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBusModal">+ Add Bus</button>
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-md">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                    <button (click)="activeTab = 'buses'" [class]="activeTab === 'buses' ? 'border-b-2 border-blue-500 text-blue-600 font-medium py-4' : 'text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent py-4'">
+            Buses
+          </button>
+                    <button (click)="activeTab = 'routes'" [class]="activeTab === 'routes' ? 'border-b-2 border-blue-500 text-blue-600 font-medium py-4' : 'text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent py-4'">
+            Routes
+          </button>
+                    <button (click)="activeTab = 'tracking'" [class]="activeTab === 'tracking' ? 'border-b-2 border-blue-500 text-blue-600 font-medium py-4' : 'text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent py-4'">
+            Tracking
+          </button>
+                    <button (click)="activeTab = 'contacts'" [class]="activeTab === 'contacts' ? 'border-b-2 border-blue-500 text-blue-600 font-medium py-4' : 'text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent py-4'">
+            Messages
+          </button>
+                </nav>
             </div>
 
-            <div class="row g-3">
-                @for (bus of buses; track bus.id) {
-                <div class="col-md-4">
-                    <div class="card p-3 shadow-sm">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <div class="fw-semibold">Bus {{ bus.number }}</div>
-                                <span class="badge bg-{{ bus.status === 'active' ? 'success' : 'secondary' }}">{{ bus.status }}</span>
+            <div class="p-6">
+                <!-- Buses Tab -->
+                @if (activeTab === 'buses') {
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Bus Fleet</h2>
+                        <button (click)="showBusModal = true" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+              + Add Bus
+            </button>
+                    </div>
+
+                    @if (buses.length > 0) {
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        @for (bus of buses; track bus.id) {
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex-1">
+                                    <div class="text-lg font-semibold text-gray-900 mb-2">Bus {{ bus.number }}</div>
+                                    <span class="px-3 py-1 rounded-full text-xs font-medium" [ngClass]="{
+                      'bg-green-100 text-green-800': bus.status === 'active',
+                      'bg-gray-100 text-gray-800': bus.status !== 'active'
+                    }">{{ bus.status }}</span>
+                                </div>
+                                <button (click)="deleteBus(bus.id)" class="text-red-600 hover:text-red-800 font-medium text-sm">
+                  Delete
+                </button>
                             </div>
-                            <button class="btn btn-sm btn-outline-danger" (click)="deleteBus(bus.id)">Delete</button>
+                            <div class="text-sm text-gray-600 mb-1">Capacity: {{ bus.capacity }}</div>
+                            @if (bus.routeName) {
+                            <div class="text-sm text-gray-600">Route: {{ bus.routeName }}</div>
+                            }
                         </div>
-                        <div class="text-muted">Capacity: {{ bus.capacity }}</div>
-                        @if (bus.routeName) {
-                        <div class="text-muted">Route: {{ bus.routeName }}</div>
                         }
                     </div>
-                </div>
-                }
-            </div>
-
-            @if (buses.length === 0) {
-            <div class="text-center text-muted py-4">No buses added yet.</div>
-            }
-        </div>
-
-        <!-- Routes -->
-        <div id="routes" class="tab-pane fade">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5>Routes</h5>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRouteModal">+ Add Route</button>
-            </div>
-
-            <div class="list-group">
-                @for (route of routes; track route.id) {
-                <div class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <div class="fw-semibold">{{ route.routeName }}</div>
-                            <small class="text-muted">Bus {{ route.busNumber }} • {{ route.startTime }} - {{ route.endTime }}</small>
-                            <div class="text-muted">Stops: {{ route.stops.join(' → ') }}</div>
-                        </div>
-                        <button class="btn btn-sm btn-outline-danger" (click)="deleteRoute(route.id)">Delete</button>
+                    } @else {
+                    <div class="text-center py-12 text-gray-500">
+                        No buses added yet.
                     </div>
+                    }
                 </div>
                 }
-            </div>
 
-            @if (routes.length === 0) {
-            <div class="text-center text-muted py-4">No routes added yet.</div>
-            }
-        </div>
-
-        <!-- Tracking -->
-        <div id="tracking" class="tab-pane fade">
-            <h5 class="mb-3">Tracking</h5>
-            <div class="row g-3">
-                @for (t of tracking; track t.busId) {
-                <div class="col-md-6">
-                    <div class="card p-3 shadow-sm">
-                        <div class="fw-semibold mb-2">Bus {{ t.busId }}</div>
-                        <div class="small text-muted">
-                            <div>Latitude: {{ t.latitude }}</div>
-                            <div>Longitude: {{ t.longitude }}</div>
-                            <div>Last Update: {{ t.timestamp }}</div>
-                        </div>
+                <!-- Routes Tab -->
+                @if (activeTab === 'routes') {
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Routes</h2>
+                        <button (click)="showRouteModal = true" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+              + Add Route
+            </button>
                     </div>
+
+                    @if (routes.length > 0) {
+                    <div class="space-y-3">
+                        @for (route of routes; track route.id) {
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-sm transition">
+                            <div class="flex justify-between items-start">
+                                <div class="flex-1">
+                                    <div class="font-semibold text-gray-900 mb-1">{{ route.routeName }}</div>
+                                    <div class="text-sm text-gray-600 mb-1">Bus {{ route.busNumber }} • {{ route.startTime }} - {{ route.endTime }}</div>
+                                    <div class="text-sm text-gray-600">Stops: {{ route.stops.join(' → ') }}</div>
+                                </div>
+                                <button (click)="deleteRoute(route.id)" class="text-red-600 hover:text-red-800 font-medium text-sm ml-4">
+                  Delete
+                </button>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    } @else {
+                    <div class="text-center py-12 text-gray-500">
+                        No routes added yet.
+                    </div>
+                    }
+                </div>
+                }
+
+                <!-- Tracking Tab -->
+                @if (activeTab === 'tracking') {
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Tracking</h2>
+                    @if (tracking.length > 0) {
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        @for (t of tracking; track t.busId) {
+                        <div class="bg-white border border-gray-200 rounded-lg p-4">
+                            <div class="font-semibold text-gray-900 mb-3">Bus {{ t.busId }}</div>
+                            <div class="text-sm text-gray-600 space-y-1">
+                                @if (t.latitude !== undefined && t.longitude !== undefined) {
+                                <div>Latitude: {{ t.latitude }}</div>
+                                <div>Longitude: {{ t.longitude }}</div>
+                                }
+                                <div>Last Update: {{ t.timestamp | date:'short' }}</div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    } @else {
+                    <div class="text-center py-12 text-gray-500">
+                        No tracking data.
+                    </div>
+                    }
+                </div>
+                }
+
+                <!-- Contacts Tab -->
+                @if (activeTab === 'contacts') {
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Messages</h2>
+                    @if (contacts.length > 0) {
+                    <div class="space-y-3">
+                        @for (c of contacts; track c.email) {
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                            <div class="font-semibold text-gray-900 mb-1">{{ c.name }}</div>
+                            <div class="text-sm text-gray-600 mb-2">{{ c.email }}</div>
+                            <div class="text-gray-700">{{ c.message }}</div>
+                        </div>
+                        }
+                    </div>
+                    } @else {
+                    <div class="text-center py-12 text-gray-500">
+                        No messages yet.
+                    </div>
+                    }
                 </div>
                 }
             </div>
-
-            @if (tracking.length === 0) {
-            <div class="text-center text-muted py-4">No tracking data.</div>
-            }
-        </div>
-
-        <!-- Contacts -->
-        <div id="contacts" class="tab-pane fade">
-            <h5>Messages</h5>
-            <div class="list-group">
-                @for (c of contacts; track c.email) {
-                <div class="list-group-item">
-                    <div class="fw-semibold">{{ c.name }}</div>
-                    <div class="small text-muted">{{ c.email }}</div>
-                    <div class="mt-1">{{ c.message }}</div>
-                </div>
-                }
-            </div>
-
-            @if (contacts.length === 0) {
-            <div class="text-center text-muted py-4">No messages yet.</div>
-            }
         </div>
     </div>
 
     <!-- Add Bus Modal -->
-    <div class="modal fade" id="addBusModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Add Bus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <input class="form-control mb-2" placeholder="Bus Number" [(ngModel)]="newBus.number" />
-                    <input class="form-control mb-2" placeholder="Capacity" type="number" [(ngModel)]="newBus.capacity" />
-                    <input class="form-control mb-3" placeholder="Route Name" [(ngModel)]="newBus.routeName" />
-                    <button class="btn btn-primary w-100" (click)="addBus()" data-bs-dismiss="modal">Add</button>
-                </div>
+    @if (showBusModal) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" (click)="showBusModal = false">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4" (click)="$event.stopPropagation()">
+            <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900">Add Bus</h3>
+                <button (click)="showBusModal = false" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">
+          ×
+        </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Bus Number" [(ngModel)]="newBus.number" />
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Capacity" type="number" [(ngModel)]="newBus.capacity" />
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Route Name" [(ngModel)]="newBus.routeName" />
+                <button (click)="addBus()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+          Add
+        </button>
             </div>
         </div>
     </div>
+    }
 
     <!-- Add Route Modal -->
-    <div class="modal fade" id="addRouteModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Add Route</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    @if (showRouteModal) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" (click)="showRouteModal = false">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()">
+            <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900">Add Route</h3>
+                <button (click)="showRouteModal = false" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">
+          ×
+        </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Bus Number" [(ngModel)]="newRoute.busNumber" />
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Route Name" [(ngModel)]="newRoute.routeName" />
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Stops (comma separated)" [(ngModel)]="newRoute.stops" />
+                <div class="grid grid-cols-2 gap-4">
+                    <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Start Time" [(ngModel)]="newRoute.startTime" />
+                    <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="End Time" [(ngModel)]="newRoute.endTime" />
                 </div>
-                <div class="modal-body">
-                    <input class="form-control mb-2" placeholder="Bus Number" [(ngModel)]="newRoute.busNumber" />
-                    <input class="form-control mb-2" placeholder="Route Name" [(ngModel)]="newRoute.routeName" />
-                    <input class="form-control mb-2" placeholder="Stops (comma separated)" [(ngModel)]="newRoute.stops" />
-                    <input class="form-control mb-2" placeholder="Start Time" [(ngModel)]="newRoute.startTime" />
-                    <input class="form-control mb-2" placeholder="End Time" [(ngModel)]="newRoute.endTime" />
-                    <input class="form-control mb-3" placeholder="Frequency" [(ngModel)]="newRoute.frequency" />
-                    <button class="btn btn-primary w-100" (click)="addRoute()" data-bs-dismiss="modal">Add</button>
-                </div>
+                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Frequency" [(ngModel)]="newRoute.frequency" />
+                <button (click)="addRoute()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+          Add
+        </button>
             </div>
         </div>
     </div>
+    }
 </div>
-
-<hr class="my-5" />

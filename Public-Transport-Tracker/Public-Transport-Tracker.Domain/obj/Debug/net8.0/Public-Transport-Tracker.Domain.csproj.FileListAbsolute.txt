@@ -9,3 +9,15 @@ E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Do
 E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\refint\Public-Transport-Tracker.Domain.dll
 E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.pdb
 E:\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\ref\Public-Transport-Tracker.Domain.dll
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.deps.json
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.dll
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\bin\Debug\net8.0\Public-Transport-Tracker.Domain.pdb
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.AssemblyInfoInputs.cache
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.AssemblyInfo.cs
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.sourcelink.json
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.dll
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\refint\Public-Transport-Tracker.Domain.dll
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\Public-Transport-Tracker.Domain.pdb
+C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Domain\obj\Debug\net8.0\ref\Public-Transport-Tracker.Domain.dll
