@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Public-Transport-Tracker.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a98b37ef1594110ee60d51a39ce288f203a5c6b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5937f8e5e213ed45acaf30e3f475460451479b6c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Public-Transport-Tracker.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Public-Transport-Tracker.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
