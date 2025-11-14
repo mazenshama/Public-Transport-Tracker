@@ -1,0 +1,13 @@
+﻿namespace Public_Transport_Tracker.Domain.Entities
+{
+    public class Admin
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+        public string PasswordSalt { get; set; } = string.Empty;
+        public string Role { get; set; } = "Admin";
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
