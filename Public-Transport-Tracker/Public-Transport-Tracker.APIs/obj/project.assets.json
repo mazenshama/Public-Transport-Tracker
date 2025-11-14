@@ -4208,11 +4208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj",
+      "projectUniqueName": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj",
       "projectName": "Public-Transport-Tracker.APIs",
-      "projectPath": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj",
+      "projectPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\Public-Transport-Tracker.APIs.csproj",
       "packagesPath": "C:\\Users\\7oda\\.nuget\\packages\\",
-      "outputPath": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\obj\\",
+      "outputPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.APIs\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4233,14 +4233,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Public-Transport-Tracker.Application.Abstraction.csproj": {
-              "projectPath": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Public-Transport-Tracker.Application.Abstraction.csproj"
+            "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Public-Transport-Tracker.Application.Abstraction.csproj": {
+              "projectPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application.Abstraction\\Public-Transport-Tracker.Application.Abstraction.csproj"
             },
-            "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Public-Transport-Tracker.Application.csproj": {
-              "projectPath": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Public-Transport-Tracker.Application.csproj"
+            "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Public-Transport-Tracker.Application.csproj": {
+              "projectPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Application\\Public-Transport-Tracker.Application.csproj"
             },
-            "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Public-Transport-Tracker.Persistence.csproj": {
-              "projectPath": "E:\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Public-Transport-Tracker.Persistence.csproj"
+            "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Public-Transport-Tracker.Persistence.csproj": {
+              "projectPath": "C:\\Users\\7oda\\Documents\\GitHub\\Public-Transport-Tracker\\Public-Transport-Tracker\\Public-Transport-Tracker.Persistence\\Public-Transport-Tracker.Persistence.csproj"
             }
           }
         }
