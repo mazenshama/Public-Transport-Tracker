@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="contact-page">
   <div class="contact-container">
     <div class="header">
@@ -83,3 +84,91 @@
     </div>
   </div>
 </div>
+=======
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+
+<div class="contact-container container ">
+    <div class="row">
+        <div class="col-12">
+            <div class="header p-3 bg-white rounded">
+                <h5 class="fw-semibold">Contact Us</h5>
+                <p class="mb-0">
+                    Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Left Side Info -->
+        <div class="col-md-4">
+            <div class="info-box d-flex align-items-center mb-3 p-3 bg-white shadow-sm rounded">
+                <i class="bi bi-envelope-fill fs-1 text-primary me-3"></i>
+                <div>
+                    <h6 class="fw-bold mb-1">Email</h6>
+                    <p class="mb-0 small">support&#64;bustrack.com</p>
+                    <p class="mb-0 small">info&#64;bustrack.com</p>
+                </div>
+            </div>
+
+            <div class="info-box d-flex align-items-center mb-3 p-3 bg-white shadow-sm rounded">
+                <i class="bi bi-telephone-fill fs-1 text-primary me-3"></i>
+                <div>
+                    <h6 class="fw-bold mb-1">Phone</h6>
+                    <p class="mb-0 small">+1 (555) 123-4567</p>
+                    <p class="mb-0 small">Mon–Fri 9am–6pm</p>
+                </div>
+            </div>
+
+            <div class="info-box d-flex align-items-center p-3 bg-white shadow-sm rounded">
+                <i class="bi bi-geo-alt-fill fs-1 text-primary me-3"></i>
+                <div>
+                    <h6 class="fw-bold mb-1">Office</h6>
+                    <p class="mb-0 small">123 Transit Avenue,</p>
+                    <p class="mb-0 small">United States</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="col-md-8">
+            <form (ngSubmit)="sendMessage()" class="bg-light p-4 rounded shadow-sm">
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="fw-bold">Name</label>
+                        <input type="text" class="form-control" placeholder="Your name" [(ngModel)]="contact.name" name="name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="fw-bold">Email</label>
+                        <input type="email" class="form-control" placeholder="Your@email.com" [(ngModel)]="contact.email" name="email" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="fw-bold">Phone</label>
+                        <input type="text" class="form-control" placeholder="+20 10987654321" [(ngModel)]="contact.phone" name="phone" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="fw-bold">Subject</label>
+                        <input type="text" class="form-control" placeholder="What is this about?" [(ngModel)]="contact.subject" name="subject" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Message</label>
+                    <textarea class="form-control" rows="4" placeholder="Tell us more about your inquiry....." [(ngModel)]="contact.message" name="message"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold">
+            Send Message
+          </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+>>>>>>> Stashed changes
