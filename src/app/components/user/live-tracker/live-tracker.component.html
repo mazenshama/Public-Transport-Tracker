@@ -1,1 +1,38 @@
-<p>live-tracker works!</p>
+<div class="tracker-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Search bus..." 
+        [(ngModel)]="searchQuery"
+      />
+      <img src="../../../../assets/icons/search.png" alt="search" class="search-icon" />
+    </div>
+
+    @if (isLoading) {
+    <div class="loading-message">Loading buses...</div>
+    } @else if (errorMessage) {
+    <div class="error-message">{{ errorMessage }}</div>
+    } @else {
+    <div class="bus-list">
+      @if (filteredBuses.length === 0) {
+      <div class="no-buses">No buses found</div>
+      } @else {
+      <div class="bus-card" *ngFor="let bus of filteredBuses">
+        <p class="bus-title">Bus {{ bus.number }}</p>
+        <p class="bus-desc">{{ getBusDescription(bus) }}</p>
+        @if (hasLocation(bus)) {
+        <span class="location-badge">📍 Live Location</span>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Map area -->
+  <div class="map-container">
+    <div id="busMap"></div>
+  </div>
+</div>

@@ -21,15 +21,22 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  "node_modules/leaflet/dist/leaflet.css",
+  "src/styles.css"
+]
+,
+            "scripts": [
+
+
+            ]
           },
           "configurations": {
             "production": {

@@ -1,1 +1,85 @@
-<p>contact works!</p>
+<div class="contact-page">
+  <div class="contact-container">
+    <div class="header">
+      <h5 class="header-title">Contact Us</h5>
+      <p class="header-description">
+        Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      </p>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- Left Side -->
+      <div class="info-section">
+        <div class="info-box">
+          <div class="info-icon">
+            <img src="assets/icons/email .png" alt="Email" class="icon">
+          </div>
+          <div class="info-content">
+            <h6 class="info-title">Email</h6>
+            <p class="info-text">support&#64;bustrack.com</p>
+            <p class="info-text">info&#64;bustrack.com</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">
+            <img src="assets/icons/phone.png" alt="Phone" class="icon">
+          </div>
+          <div class="info-content">
+            <h6 class="info-title">Phone</h6>
+            <p class="info-text">+1 (555) 123-4567</p>
+            <p class="info-text">Mon–Fri 9am–6pm</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">
+            <img src="assets/icons/location.png" alt="Office" class="icon">
+          </div>
+          <div class="info-content">
+            <h6 class="info-title">Office</h6>
+            <p class="info-text">123 Transit Avenue,</p>
+            <p class="info-text">United States</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="form-section">
+        <form (ngSubmit)="sendMessage()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Your name" [(ngModel)]="contact.name" name="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Your@email.com" [(ngModel)]="contact.email" name="email" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="text" class="form-control" placeholder="+20 10987654321" [(ngModel)]="contact.phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" placeholder="What is this about?" [(ngModel)]="contact.subject" name="subject" />
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">Message</label>
+            <textarea class="form-control textarea" rows="4"
+              placeholder="Tell us more about your inquiry..." [(ngModel)]="contact.message" name="message"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="submit-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
