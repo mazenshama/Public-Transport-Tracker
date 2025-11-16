@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { ApiService, Bus, RouteModel, Contact, Tracking } from '../../../../service/api.service-admin';
+=======
+import { ApiService, Bus, RouteModel, Contact, Tracking } from '../../service/api.service-admin';
+>>>>>>> Stashed changes
 =======
 import { ApiService, Bus, RouteModel, Contact, Tracking } from '../../service/api.service-admin';
 >>>>>>> Stashed changes
@@ -16,6 +20,10 @@ import { ApiService, Bus, RouteModel, Contact, Tracking } from '../../service/ap
 })
 export class AdminDashboardComponent implements OnInit {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  // بيانات عامة
+>>>>>>> Stashed changes
 =======
   // بيانات عامة
 >>>>>>> Stashed changes
@@ -25,6 +33,10 @@ export class AdminDashboardComponent implements OnInit {
   tracking: Tracking[] = [];
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  // الإحصائيات
+>>>>>>> Stashed changes
 =======
   // الإحصائيات
 >>>>>>> Stashed changes
@@ -35,6 +47,7 @@ export class AdminDashboardComponent implements OnInit {
     pendingContacts: 0,
   };
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
   newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
@@ -81,6 +94,8 @@ export class AdminDashboardComponent implements OnInit {
       this.contacts = [];
       this.tracking = [];
 =======
+=======
+>>>>>>> Stashed changes
   // كائنات الإدخال
   newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
   newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
@@ -136,12 +151,19 @@ export class AdminDashboardComponent implements OnInit {
         { busId: '2', heading: 90, timestamp: new Date().toISOString() },
       ];
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       this.updateStats();
     }
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+  // تحديث الإحصائيات
+>>>>>>> Stashed changes
 =======
   // تحديث الإحصائيات
 >>>>>>> Stashed changes
@@ -154,6 +176,7 @@ export class AdminDashboardComponent implements OnInit {
     };
   }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   async addBus() {
     if (!this.newBus.number || !this.newBus.capacity) {
@@ -245,6 +268,8 @@ export class AdminDashboardComponent implements OnInit {
       alert(error?.message || 'Failed to delete route. Please try again.');
     }
 =======
+=======
+>>>>>>> Stashed changes
   // إضافة حافلة جديدة
   async addBus() {
     if (!this.newBus.number || !this.newBus.capacity) return;
@@ -298,6 +323,9 @@ export class AdminDashboardComponent implements OnInit {
       this.routes = this.routes.filter((r) => r.id !== routeId);
     }
     this.updateStats();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
 }
