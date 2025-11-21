@@ -137,8 +137,8 @@ interface ApiResponse<T> {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private apiUrl = environment.apiBaseUrl || 'https://localhost:7114';
-
+  // private apiUrl = environment.apiBaseUrl || 'https://publictransporttraker.runasp.net/api/admin';
+private apiUrl = `${environment.apiBaseUrl}/Driver`;
   constructor(private http: HttpClient) {}
 
   getBuses(): Observable<{ buses: Bus[] }> {

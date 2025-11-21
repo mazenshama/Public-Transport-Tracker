@@ -43,7 +43,8 @@ export interface Contact {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = environment.apiBaseUrl || 'https://publictransporttraker.runasp.net/api/admin';
+  // private apiUrl = environment.apiBaseUrl || 'https://publictransporttraker.runasp.net/api/admin';
+private apiUrl = `${environment.apiBaseUrl}/Admin`;
 
   constructor(private http: HttpClient) {}
 

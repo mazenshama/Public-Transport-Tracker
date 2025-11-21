@@ -32,7 +32,8 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthServices {
-  private apiBaseUrl = environment.apiBaseUrl || 'https://localhost:7114'; 
+  // private apiBaseUrl = environment.apiBaseUrl || 'https://localhost:7114';
+private apiBaseUrl = `${environment.apiBaseUrl}/Auth`;
 
   constructor(private _HttpClient: HttpClient) {}
 
