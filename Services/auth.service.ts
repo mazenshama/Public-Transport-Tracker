@@ -33,12 +33,12 @@ interface AuthResponse {
 })
 export class AuthServices {
   // private apiBaseUrl = environment.apiBaseUrl || 'https://localhost:7114';
-private apiBaseUrl = `${environment.apiBaseUrl}/Auth`;
+private apiBaseUrl = `${environment.apiBaseUrl}`;
 
   constructor(private _HttpClient: HttpClient) {}
 
   serLogIn(payload: LoginRequest): Observable<AuthResponse> {
-    return this._HttpClient.post<AuthResponse>(`${this.apiBaseUrl}/api/auth/login`, payload)
+    return this._HttpClient.post<AuthResponse>(`${this.apiBaseUrl}/auth/login`, payload)
       .pipe(
         tap(response => {
           if (response.success && response.token) {
@@ -50,7 +50,7 @@ private apiBaseUrl = `${environment.apiBaseUrl}/Auth`;
   }
 
   serSignUp(payload: RegisterRequest): Observable<AuthResponse> {
-    return this._HttpClient.post<AuthResponse>(`${this.apiBaseUrl}/api/auth/register`, payload)
+    return this._HttpClient.post<AuthResponse>(`${this.apiBaseUrl}/auth/register`, payload)
       .pipe(
         tap(response => {
           if (response.success && response.token) {
