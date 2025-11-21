@@ -1,132 +1,104 @@
 <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto space-y-6">
-    <!-- Header -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Driver Dashboard</h1>
-      <p class="text-gray-600">
-        Welcome, {{ user()?.name || "Driver" }}! Manage your trips and bus status.
-      </p>
-    </div>
-
-    <!-- Current Trip Status -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-      <h2 class="text-xl font-semibold text-gray-900 mb-6">Current Trip Status</h2>
-
-      <ng-container *ngIf="currentBus(); else noActiveTrip">
-        <!-- Bus Info -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-          <div class="flex justify-between items-center">
-            <div class="flex-1">
-              <p class="text-sm text-gray-600 mb-1">Current Bus</p>
-              <h3 class="text-2xl font-bold text-gray-900 mb-1">Bus {{ currentBus()?.number }}</h3>
-              <ng-container *ngIf="currentBus()?.routeName">
-                <p class="text-gray-700">Route: {{ currentBus()?.routeName }}</p>
-              </ng-container>
-            </div>
-            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Active Trip</span>
-          </div>
+    <div class="max-w-7xl mx-auto space-y-6">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Driver Dashboard</h1>
+            <p class="text-gray-600">
+                Welcome, {{ user()?.name || "Driver" }}! Manage your trips and bus status.
+            </p>
         </div>
 
-        <!-- Location Display -->
-        <ng-container *ngIf="location(); else noLocation">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-            <div class="flex items-start">
-              <svg
-                class="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
+        <!-- Current Trip Status -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">Current Trip Status</h2>
+
+            <ng-container *ngIf="currentBus(); else noActiveTrip">
+                <!-- Bus Info -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-600 mb-1">Current Bus</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">Bus {{ currentBus()?.number }}</h3>
+                            <ng-container *ngIf="currentBus()?.routeName">
+                                <p class="text-gray-700">Route: {{ currentBus()?.routeName }}</p>
+                            </ng-container>
+                        </div>
+                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Active Trip</span>
+                    </div>
+                </div>
+
+                <!-- Location Display -->
+                <ng-container *ngIf="location(); else noLocation">
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                 <path d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
               </svg>
-              <div class="flex-1">
-                <p class="text-sm text-gray-600 mb-1">Current Location</p>
-                <p class="text-gray-900 font-mono text-sm">
-                  {{ location()!.lat.toFixed(6) }},
-                  {{ location()!.lng.toFixed(6) }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #noLocation>
-          <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-3 mb-4">
-            <p class="text-sm">Location not yet available. Ensure location services are enabled.</p>
-          </div>
-        </ng-template>
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-600 mb-1">Current Location</p>
+                                <p class="text-gray-900 font-mono text-sm">
+                                    {{ location()!.lat.toFixed(6) }}, {{ location()!.lng.toFixed(6) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #noLocation>
+                    <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg p-3 mb-4">
+                        <p class="text-sm">Location not yet available. Ensure location services are enabled.</p>
+                    </div>
+                </ng-template>
 
-        <!-- Tracking Status -->
-        <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4 flex items-center">
-          <span
-            class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"
-            *ngIf="isTracking()"
-          ></span>
-          <span class="text-gray-700 text-sm">{{
+                <!-- Tracking Status -->
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4 flex items-center">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" *ngIf="isTracking()"></span>
+                    <span class="text-gray-700 text-sm">{{
             isTracking() ? "Live tracking active" : "Tracking paused"
           }}</span>
-        </div>
+                </div>
 
-        <!-- Report Issue -->
-        <div class="mb-4">
-          <h3 class="text-lg font-semibold text-gray-900 mb-4">Report Issue</h3>
-          <div class="mb-4">
-            <label for="issueType" class="block text-sm font-medium text-gray-700 mb-2">Issue Type</label>
-            <select 
-              [(ngModel)]="issueType" 
-              id="issueType" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-            >
+                <!-- Report Issue -->
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Report Issue</h3>
+                    <div class="mb-4">
+                        <label for="issueType" class="block text-sm font-medium text-gray-700 mb-2">Issue Type</label>
+                        <select [(ngModel)]="issueType" id="issueType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
               <option value="">Select an issue type</option>
               <option value="mechanical">Mechanical Failure</option>
               <option value="electrical">Electrical Issue</option>
               <option value="accident">Accident</option>
               <option value="other">Other</option>
             </select>
-          </div>
-          <div class="mb-4">
-            <label for="issueDesc" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-            <textarea
-              [(ngModel)]="issueDescription"
-              id="issueDesc"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
-              rows="3"
-              placeholder="Describe the issue in detail..."
-            ></textarea>
-          </div>
-          <button
-            (click)="handleReportIssue()"
-            class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200 mb-4"
-          >
+                    </div>
+                    <div class="mb-4">
+                        <label for="issueDesc" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea [(ngModel)]="issueDescription" id="issueDesc" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none" rows="3" placeholder="Describe the issue in detail..."></textarea>
+                    </div>
+                    <button (click)="handleReportIssue()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200 mb-4">
             Report Issue & Mark Bus Out of Service
           </button>
-        </div>
+                </div>
 
-        <!-- End Trip Button -->
-        <button 
-          (click)="handleEndTrip()" 
-          class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
-        >
+                <!-- End Trip Button -->
+                <button (click)="handleEndTrip()" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
           End Trip
         </button>
-      </ng-container>
+            </ng-container>
 
-      <ng-template #noActiveTrip>
-        <div class="text-center py-8">
-          <div class="mb-4">
-            <svg class="w-16 h-16 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <ng-template #noActiveTrip>
+                <div class="text-center py-8">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
-          </div>
-          <p class="text-lg font-medium text-gray-900 mb-1">No active trip</p>
-          <p class="text-gray-600 mb-6">Select a bus below to start your trip</p>
+                    </div>
+                    <p class="text-lg font-medium text-gray-900 mb-1">No active trip</p>
+                    <p class="text-gray-600 mb-6">Select a bus below to start your trip</p>
 
-          <div class="max-w-md mx-auto">
-            <label for="selectBus" class="block text-sm font-medium text-gray-700 mb-2 text-left">Select Bus</label>
-            <select
-              [(ngModel)]="selectedBus"
-              id="selectBus"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition mb-4"
-            >
+                    <div class="max-w-md mx-auto">
+                        <label for="selectBus" class="block text-sm font-medium text-gray-700 mb-2 text-left">Select Bus</label>
+                        <select [(ngModel)]="selectedBus" id="selectBus" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition mb-4">
               <option value="">Choose a bus</option>
               <option *ngFor="let bus of availableBuses()" [value]="bus.id">
                 Bus {{ bus.number }}{{ bus.routeName ? ' - ' + bus.routeName : '' }}
@@ -134,39 +106,42 @@
               <option *ngIf="availableBuses().length === 0" disabled>No buses available</option>
             </select>
 
-            <button
-              (click)="handleStartTrip()"
-              [disabled]="!selectedBus() || availableBuses().length === 0"
-              class="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition duration-200"
-            >
+                        <button (click)="handleStartTrip()" [disabled]="!selectedBus() || availableBuses().length === 0" class="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition duration-200">
               Start Trip
             </button>
-          </div>
+                    </div>
+                </div>
+            </ng-template>
         </div>
-      </ng-template>
-    </div>
 
-    <!-- Bus Fleet Status -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-      <h2 class="text-xl font-semibold text-gray-900 mb-6">Bus Fleet Status</h2>
-      <div *ngIf="buses().length > 0; else noBuses">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div *ngFor="let bus of buses()" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <div class="flex justify-between items-center mb-2">
-              <div class="text-lg font-semibold text-gray-900">Bus {{ bus.number }}</div>
-              <span
-                class="px-3 py-1 rounded-full text-xs font-medium"
-                [ngClass]="{
+        <!-- Bus Fleet Status -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">Bus Fleet Status</h2>
+            <div *ngIf="buses().length > 0; else noBuses">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div *ngFor="let bus of buses()" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="text-lg font-semibold text-gray-900">Bus {{ bus.number }}</div>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium" [ngClass]="{
                   'bg-green-100 text-green-800': bus.status === 'active',
                   'bg-red-100 text-red-800': bus.status === 'out-of-service',
                   'bg-gray-100 text-gray-800': bus.status !== 'active' && bus.status !== 'out-of-service'
-                }"
-                >{{ bus.status }}</span
+                }">{{ bus.status }}</span
               >
             </div>
             <div *ngIf="bus.routeName" class="text-sm text-gray-600 mt-1">
               Route: {{ bus.routeName }}
             </div>
+               <!-- Restore Button for Out-of-Service Buses -->
+        <div class="mt-3" *ngIf="bus.status === 'out-of-service'">
+          <button 
+            (click)="handleRestoreBus(bus.id)" 
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200"
+                  >restore bus to avilable</button>
+        </div>
+      </div>
+    </div>
+  </div>
           </div>
         </div>
       </div>
@@ -175,7 +150,6 @@
           No buses in the system
         </div>
       </ng-template>
-    </div>
 
     <!-- Instructions -->
     <div class="bg-gray-100 border border-gray-200 rounded-lg p-6">
@@ -183,25 +157,23 @@
       <ul class="space-y-2 text-gray-700">
         <li class="flex items-start">
           <span class="text-blue-600 mr-2">•</span>
-          <span>Select your bus from the dropdown and click "Start Trip" to begin</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">•</span>
-          <span>Your location will be tracked automatically during the trip</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">•</span>
-          <span>Click "End Trip" when you complete your route</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">•</span>
-          <span>Report any issues immediately using the issue report form</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-blue-600 mr-2">•</span>
-          <span>Ensure location services are enabled on your device</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                            <span>Select your bus from the dropdown and click "Start Trip" to begin</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">•</span>
+                                <span>Your location will be tracked automatically during the trip</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">•</span>
+                                <span>Click "End Trip" when you complete your route</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">•</span>
+                                <span>Report any issues immediately using the issue report form</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2">•</span>
+                                <span>Ensure location services are enabled on your device</span>
+                            </li>
+                            </ul>
+                        </div>

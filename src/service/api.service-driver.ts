@@ -138,11 +138,11 @@ interface ApiResponse<T> {
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   // private apiUrl = environment.apiBaseUrl || 'https://publictransporttraker.runasp.net/api/admin';
-private apiUrl = `${environment.apiBaseUrl}/Driver`;
+private apiUrl = `${environment.apiBaseUrl}/driver`;
   constructor(private http: HttpClient) {}
 
   getBuses(): Observable<{ buses: Bus[] }> {
-    return this.http.get<{ buses: Bus[] }>(`${this.apiUrl}/api/driver/buses`)
+    return this.http.get<{ buses: Bus[] }>(`${this.apiUrl}/buses`)
       .pipe(
         catchError(error => {
           console.error('Error fetching buses:', error);
@@ -153,7 +153,7 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
   }
 
   startTrip(busId: string, driverId: string): Observable<{ success: boolean }> {
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/api/driver/start-trip`, {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/start-trip`, {
       busId: busId,
       driverId: driverId
     }).pipe(
@@ -165,7 +165,7 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
   }
 
   endTrip(busId: string): Observable<{ success: boolean }> {
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/api/driver/end-trip`, {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/end-trip`, {
       busId: busId
     }).pipe(
       catchError(error => {
@@ -176,7 +176,7 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
   }
 
   updateLocation(busId: string, lat: number, lng: number, heading: number = 0): Observable<{ success: boolean }> {
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/api/driver/update-location`, {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/update-location`, {
       busId: busId,
       latitude: lat,
       longitude: lng,
@@ -191,7 +191,7 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
   }
 
   recordStation(busId: string, stationName: string): Observable<{ success: boolean }> {
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/api/driver/record-station`, {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/record-station`, {
       busId: busId,
       stationName: stationName
     }).pipe(
@@ -203,7 +203,7 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
   }
 
   reportIssue(busId: string, issueType: string, description: string): Observable<{ success: boolean }> {
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/api/driver/report-issue`, {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/report-issue`, {
       busId: busId,
       issueType: issueType,
       description: description
@@ -214,4 +214,16 @@ private apiUrl = `${environment.apiBaseUrl}/Driver`;
       })
     );
   }
+
+  /**  Restore a bus that was out-of-service */
+  restoreBus(busId: string): Observable<{ success: boolean }> {
+    return this.http.post<{ success: boolean }>(`${this.apiUrl}/restore-bus`, { busId })
+      .pipe(
+        catchError(error => {
+          console.error('Error restoring bus:', error);
+          return throwError(() => error);
+        })
+      );
+  }
 }
+
