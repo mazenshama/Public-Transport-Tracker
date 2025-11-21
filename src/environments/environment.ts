@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: ''
+  apiBaseUrl: 'https://publictransporttraker.runasp.net/api'
 };

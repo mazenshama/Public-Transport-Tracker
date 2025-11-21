@@ -90,12 +90,10 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
     this.isMenuOpen = false;
   }
-  // تعديل signIn ليحدد الدور (مثال: يمكن تعديل لاحقًا حسب backend)
   signIn(role: 'driver' | 'admin' | 'user' = 'user') {
     this.isLoggedIn = true;
     this.userRole = role;
 
-    // توجيه للداشبورد إذا كان driver أو admin
     if (role === 'driver') this.router.navigate(['/driver-dashboard']);
     else if (role === 'admin') this.router.navigate(['/admin-dashboard']);
     else this.router.navigate(['/']); // user عادي يروح Home
