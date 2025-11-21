@@ -43,7 +43,7 @@ export interface Contact {
   providedIn: 'root'
 })
 export class ApiService {
-  // private apiUrl = environment.apiBaseUrl || 'https://publictransporttraker.runasp.net/api/admin';
+  // private apiUrl = environment.apiBaseUrl || 'https://localhost:7114';
 private apiUrl = `${environment.apiBaseUrl}/Admin`;
 
   constructor(private http: HttpClient) {}
@@ -69,7 +69,7 @@ private apiUrl = `${environment.apiBaseUrl}/Admin`;
           routeName: payload.routeName ? String(payload.routeName) : null
         }
       ).toPromise();
-
+      
       if (response?.success) {
         return response;
       }
@@ -85,7 +85,7 @@ private apiUrl = `${environment.apiBaseUrl}/Admin`;
       const response = await this.http.delete<{ success: boolean }>(
         `${this.apiUrl}/api/admin/buses/${busId}`
       ).toPromise();
-
+      
       return response || { success: false };
     } catch (error) {
       console.error('Error deleting bus:', error);
@@ -117,7 +117,7 @@ private apiUrl = `${environment.apiBaseUrl}/Admin`;
           frequency: String(payload.frequency || '')
         }
       ).toPromise();
-
+      
       if (response?.success) {
         return response;
       }
@@ -133,7 +133,7 @@ private apiUrl = `${environment.apiBaseUrl}/Admin`;
       const response = await this.http.delete<{ success: boolean }>(
         `${this.apiUrl}/api/admin/routes/${routeId}`
       ).toPromise();
-
+      
       return response || { success: false };
     } catch (error) {
       console.error('Error deleting route:', error);
