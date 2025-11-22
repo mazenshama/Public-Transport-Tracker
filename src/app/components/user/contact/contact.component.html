@@ -7,6 +7,16 @@
       </p>
     </div>
 
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
     <div class="content-wrapper">
       <!-- Left Side -->
       <div class="info-section">
@@ -46,37 +56,88 @@
 
       <!-- Right Side - Form -->
       <div class="form-section">
-        <form (ngSubmit)="sendMessage()" class="contact-form">
+        <form (ngSubmit)="sendMessage()" class="contact-form" #contactForm="ngForm">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" placeholder="Your name" [(ngModel)]="contact.name" name="name" />
+              <label class="form-label">Name </label>
+              <input type="text" class="form-control" 
+                     [class.error]="hasError('name')"
+                     placeholder="Your name" 
+                     [(ngModel)]="contact.name" 
+                     name="name" 
+                     (blur)="validateField('name')"
+                     (input)="validateField('name')" />
+              <div *ngIf="hasError('name')" class="error-message">
+                {{ getError('name') }}
+              </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="Your@email.com" [(ngModel)]="contact.email" name="email" />
+              <label class="form-label">Email </label>
+              <input type="email" class="form-control" 
+                     [class.error]="hasError('email')"
+                     placeholder="your@email.com" 
+                     [(ngModel)]="contact.email" 
+                     name="email" 
+                     (blur)="validateField('email')"
+                     (input)="validateField('email')" />
+              <div *ngIf="hasError('email')" class="error-message">
+                {{ getError('email') }}
+              </div>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Phone</label>
-              <input type="text" class="form-control" placeholder="+20 10987654321" [(ngModel)]="contact.phone" name="phone" />
+              <input type="text" class="form-control" 
+                     [class.error]="hasError('phone')"
+                     placeholder="+1 (555) 123-4567" 
+                     [(ngModel)]="contact.phone" 
+                     name="phone" 
+                     (blur)="validateField('phone')"
+                     (input)="validateField('phone')" />
+              <div *ngIf="hasError('phone')" class="error-message">
+                {{ getError('phone') }}
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">Subject</label>
-              <input type="text" class="form-control" placeholder="What is this about?" [(ngModel)]="contact.subject" name="subject" />
+              <input type="text" class="form-control" 
+                     [class.error]="hasError('subject')"
+                     placeholder="What is this about?" 
+                     [(ngModel)]="contact.subject" 
+                     name="subject" 
+                     (blur)="validateField('subject')"
+                     (input)="validateField('subject')" />
+              <div *ngIf="hasError('subject')" class="error-message">
+                {{ getError('subject') }}
+              </div>
             </div>
           </div>
 
           <div class="form-group full-width">
-            <label class="form-label">Message</label>
-            <textarea class="form-control textarea" rows="4"
-              placeholder="Tell us more about your inquiry..." [(ngModel)]="contact.message" name="message"></textarea>
+            <label class="form-label">Message </label>
+            <textarea class="form-control textarea" 
+                      [class.error]="hasError('message')"
+                      rows="4"
+                      placeholder="Tell us more about your inquiry..." 
+                      [(ngModel)]="contact.message" 
+                      name="message"
+                      (blur)="validateField('message')"
+                      (input)="validateField('message')"></textarea>
+            <div class="char-counter" [class.error]="contact.message.length > 1000">
+              {{ contact.message.length }}/1000
+            </div>
+            <div *ngIf="hasError('message')" class="error-message">
+              {{ getError('message') }}
+            </div>
           </div>
 
           <div class="form-submit">
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn" [disabled]="isLoading">
+              <span *ngIf="!isLoading">Send Message</span>
+              <span *ngIf="isLoading">Sending...</span>
+            </button>
           </div>
         </form>
       </div>

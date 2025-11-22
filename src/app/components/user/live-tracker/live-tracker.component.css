@@ -228,3 +228,144 @@
     height: 38px;
   }
 }
+
+/* Statistics */
+.stats-container {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #2f72ff;
+  font-size: 16px;
+}
+
+/* Location Badge */
+.location-badge {
+  display: inline-block;
+  background: #e9ecef;
+  color: #6c757d;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.location-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Map Controls */
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.refresh-btn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.refresh-btn:hover {
+  background: #f8f9fa;
+}
+
+/* Bus Card Selection */
+.bus-card {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.bus-card:hover {
+  background-color: #eef4ff;
+  transform: translateY(-3px);
+}
+
+.bus-card.selected {
+  background-color: #2f72ff;
+  color: white;
+}
+
+.bus-card.selected .bus-desc,
+.bus-card.selected .location-badge {
+  color: white;
+}
+
+/* Loading and Error States */
+.loading-message, .error-message, .no-buses {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #dc3545;
+  background: #f8d7da;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Bus Card Selection */
+.bus-card {
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px 15px;
+  background-color: #f3f3f3;
+}
+
+.bus-card:hover {
+  background-color: #eef4ff;
+  transform: translateY(-3px);
+  border-color: #2f72ff;
+}
+
+.bus-card.selected {
+  background-color: #2f72ff;
+  color: white;
+  border-color: #2f72ff;
+}
+
+.bus-card.selected .bus-desc,
+.bus-card.selected .location-badge {
+  color: white;
+}
+
+.bus-card.selected .location-badge {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selected marker highlight */
+.bus-marker-container.selected {
+  filter: drop-shadow(0 0 8px rgba(47, 114, 255, 0.8));
+}

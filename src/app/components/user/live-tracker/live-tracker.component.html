@@ -4,26 +4,44 @@
     <div class="search-box">
       <input 
         type="text" 
-        placeholder="Search bus..." 
+        placeholder="ابحث عن باص..." 
         [(ngModel)]="searchQuery"
       />
-      <img src="../../../../assets/icons/search.png" alt="search" class="search-icon" />
+      <img src="../../../../assets/icons/search.png" alt="بحث" class="search-icon" />
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="stat-label">الباصات النشطة:</span>
+        <span class="stat-value">{{ activeBusesWithLocationCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">إجمالي الباصات:</span>
+        <span class="stat-value">{{ buses.length }}</span>
+      </div>
     </div>
 
     @if (isLoading) {
-    <div class="loading-message">Loading buses...</div>
+    <div class="loading-message">جاري تحميل الباصات...</div>
     } @else if (errorMessage) {
     <div class="error-message">{{ errorMessage }}</div>
     } @else {
     <div class="bus-list">
       @if (filteredBuses.length === 0) {
-      <div class="no-buses">No buses found</div>
+      <div class="no-buses">لا توجد باصات</div>
       } @else {
-      <div class="bus-card" *ngFor="let bus of filteredBuses">
-        <p class="bus-title">Bus {{ bus.number }}</p>
+      <div 
+        class="bus-card" 
+        *ngFor="let bus of filteredBuses" 
+        [class.selected]="selectedBus?.id === bus.id"
+        (click)="onBusSelect(bus)">
+        <p class="bus-title">باص {{ bus.number }}</p>
         <p class="bus-desc">{{ getBusDescription(bus) }}</p>
         @if (hasLocation(bus)) {
-        <span class="location-badge">📍 Live Location</span>
+        <span class="location-badge" [class.active]="bus.status === 'active'">
+          {{ bus.status === 'active' ? '📍 موقع حي' : '📍 موقع' }}
+        </span>
         }
       </div>
       }
@@ -34,5 +52,8 @@
   <!-- Map area -->
   <div class="map-container">
     <div id="busMap"></div>
+    <div class="map-controls">
+      <button class="refresh-btn" (click)="refreshData()">🔄 تحديث</button>
+    </div>
   </div>
 </div>
