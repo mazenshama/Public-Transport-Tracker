@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { RouteModel } from './api.service-admin';
+import { environment } from '../environments/environment';
+import { firstValueFrom } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RoutesService {
+
+  private apiUrl = `${environment.apiBaseUrl}/Admin/routes`;
+
+  constructor(private http: HttpClient) {}
+
+getRoutes(): Promise<RouteModel[]> {
+  const token = localStorage.getItem('token');
+
+  return firstValueFrom(
+    this.http.get<any>(this.apiUrl, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  ).then(res => {
+    console.log("ROUTES API RESPONSE:", res);
+    return res.data || res.routes || res.items || res; 
+  });
+}
+
+
+  createRoute(payload: Partial<RouteModel>): Promise<any> {
+    return firstValueFrom(
+      this.http.post(this.apiUrl, payload)
+    );
+  }
+  deleteRoute(routeId: string): Promise<any> {
+    return firstValueFrom(
+      this.http.delete(`${this.apiUrl}/${routeId}`)
+    );
+  }
+}

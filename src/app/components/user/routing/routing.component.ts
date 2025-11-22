@@ -1,29 +1,29 @@
-import { routes } from './../../../app.routes';
 import { Component, OnInit } from '@angular/core';
-import { ApiService,RouteModel } from '../../../../service/api.service-admin';
+import { RouteModel } from '../../../../service/api.service-admin';
+import { RoutesService } from '../../../../service/routes.service';
+import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule, NgFor, NgForOf } from "@angular/common"
+
 @Component({
   selector: 'app-routing',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './routing.component.html',
   styleUrl: './routing.component.css'
 })
-export class RoutingComponent implements OnInit{
+export class RoutingComponent implements OnInit {
+
   routes: RouteModel[] = [];
-  searchBusNumber='';
-  searchByDestination='';
+  searchBusNumber = '';
+  searchByDestination = '';
 
-  constructor (private api: ApiService){}
+  constructor(private routesService: RoutesService) {}
 
-  async ngOnInit(){
-    const res= await this.api.getRoutes();
-    this.routes = res.routes;
+  async ngOnInit() {
+    this.routes = await this.routesService.getRoutes();
   }
 
-   get filteredRoutes() {
+  get filteredRoutes() {
     if (!this.searchBusNumber && !this.searchByDestination) {
       return this.routes;
     }
@@ -32,11 +32,12 @@ export class RoutingComponent implements OnInit{
       const matchBus =
         !this.searchBusNumber ||
         r.busNumber.toLowerCase().includes(this.searchBusNumber.toLowerCase());
+
       const matchDestination =
         !this.searchByDestination ||
         r.routeName.toLowerCase().includes(this.searchByDestination.toLowerCase());
+
       return matchBus && matchDestination;
     });
   }
 }
-
