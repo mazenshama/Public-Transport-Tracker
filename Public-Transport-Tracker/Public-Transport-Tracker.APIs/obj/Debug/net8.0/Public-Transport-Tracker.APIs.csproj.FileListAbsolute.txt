@@ -309,3 +309,6 @@ C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\Public-Transport-Tracker.APIs.pdb
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\Public-Transport-Tracker.APIs.genruntimeconfig.cache
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\ref\Public-Transport-Tracker.APIs.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\Public-Transport-Tracker.APIs.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\refint\Public-Transport-Tracker.APIs.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.APIs\obj\Debug\net8.0\Public-Transport-Tracker.APIs.pdb

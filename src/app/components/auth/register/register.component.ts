@@ -50,6 +50,7 @@ export class RegisterComponent {
 
       this._AuthServices.serSignUp(payload).subscribe({
         next: (res) => {
+          console.log(res);
           this.isLoading = false;
           if (res.success && res.user) {
             // Navigate based on role

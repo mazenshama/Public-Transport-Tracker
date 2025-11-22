@@ -32,8 +32,8 @@ export class DriverDashboardComponent implements OnInit, OnDestroy {
       });
       console.log('Filtering buses. Total:', this.buses().length, 'Available:', filtered.length);
       this.availableBuses.set(filtered);
-    }, { allowSignalWrites: true }); 
-    
+    }, { allowSignalWrites: true });
+
     effect(() => {
         if (this.isTracking() && this.currentBus()) {
              this.watchId = navigator.geolocation.watchPosition(pos => {
@@ -50,7 +50,7 @@ export class DriverDashboardComponent implements OnInit, OnDestroy {
         }
     });
 
-  } 
+  }
 
   ngOnInit(): void {
     const currentUser = this.authService.getUser();
@@ -70,29 +70,29 @@ export class DriverDashboardComponent implements OnInit, OnDestroy {
         console.log('Buses response:', res);
         console.log('Response type:', typeof res);
         console.log('Response keys:', Object.keys(res || {}));
-        
+
         if (res && res.buses) {
           console.log('Buses array:', res.buses);
           console.log('Buses count:', res.buses.length);
           console.log('First bus:', res.buses[0]);
-          
+
           const processedBuses: Bus[] = res.buses.map(bus => {
             const statusLower = (bus.status || 'available').toLowerCase();
-            const validStatus: 'available' | 'active' | 'out-of-service' = 
-              (statusLower === 'active' || statusLower === 'out-of-service') 
+            const validStatus: 'available' | 'active' | 'out-of-service' =
+              (statusLower === 'active' || statusLower === 'out-of-service')
                 ? statusLower as 'active' | 'out-of-service'
                 : 'available';
-            
+
             return {
               ...bus,
               status: validStatus
             };
           });
-          
+
           this.buses.set(processedBuses);
           console.log('Buses signal set:', this.buses().length);
           console.log('Available buses:', this.availableBuses().length);
-          
+
           const activeBus = processedBuses.find(b => b.currentDriverId === this.user()?.id && b.status === 'active');
           if (activeBus) {
             this.currentBus.set(activeBus);
@@ -117,16 +117,16 @@ handleStartTrip(): void {
       alert('Please select a bus.');
       return;
   }
-  
+
   const driverId = this.user()?.id;
-  console.log('Sending Bus ID:', this.selectedBus()); 
+  console.log('Sending Bus ID:', this.selectedBus());
   console.log('Sending Driver ID:', driverId);
-  
+
   if (!driverId) {
       alert('Driver ID not found. Please log in again.');
       return;
   }
-  
+
   this.apiService.startTrip(this.selectedBus(), driverId).subscribe({
       next: () => {
           this.fetchBuses();
@@ -159,6 +159,14 @@ handleStartTrip(): void {
       this.fetchBuses();
     });
   }
+
+  handleRestoreBus(busId: string): void {
+    this.apiService.restoreBus(busId).subscribe(() => {
+      alert('Bus restored to available');
+      this.fetchBuses();
+    });
+  }
+
 
   private stopLocationTracking(): void {
     if (this.watchId !== null) navigator.geolocation.clearWatch(this.watchId);

@@ -37,3 +37,6 @@ C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\refint\Public-Transport-Tracker.Application.dll
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\Public-Transport-Tracker.Application.pdb
 C:\Users\7oda\Documents\GitHub\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\ref\Public-Transport-Tracker.Application.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\Public-Transport-Tracker.Application.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\refint\Public-Transport-Tracker.Application.dll
+C:\Users\omesl\Public-Transport-Tracker\Public-Transport-Tracker\Public-Transport-Tracker.Application\obj\Debug\net8.0\Public-Transport-Tracker.Application.pdb
