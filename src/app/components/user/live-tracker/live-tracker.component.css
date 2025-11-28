@@ -1,4 +1,7 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
 /* Layout */
+
 .tracker-container {
   display: flex;
   justify-content: center;
@@ -11,6 +14,7 @@
 }
 
 /* Sidebar */
+
 .sidebar {
   width: 28%;
   background: #f3f3f3;
@@ -22,6 +26,7 @@
 }
 
 /* Search box */
+
 .search-box {
   width: 100%;
   position: relative;
@@ -52,6 +57,7 @@
 }
 
 /* Bus List */
+
 .bus-list {
   max-height: 70vh;
   overflow-y: auto;
@@ -62,11 +68,13 @@
 }
 
 /* Hide scrollbar */
+
 .bus-list::-webkit-scrollbar {
   width: 0;
 }
 
 /* Bus Card */
+
 .bus-card {
   border: 2px solid #2f72ff;
   border-radius: 12px;
@@ -94,8 +102,10 @@
 }
 
 /* Map Container - FIXED */
+
 .map-container {
-  flex: 1; /* Changed from width: 65% */
+  flex: 1;
+  /* Changed from width: 65% */
   height: 80vh;
   background: #e0e0e0;
   border-radius: 12px;
@@ -105,6 +115,7 @@
 }
 
 /* Map itself - FIXED */
+
 #busMap {
   position: absolute;
   top: 0;
@@ -115,6 +126,7 @@
 }
 
 /* Ensure Leaflet containers have proper dimensions */
+
 .leaflet-container {
   width: 100% !important;
   height: 100% !important;
@@ -123,6 +135,7 @@
 }
 
 /* Custom Bus Marker Styles */
+
 .custom-bus-marker {
   background: transparent !important;
   border: none !important;
@@ -144,7 +157,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -168,16 +182,15 @@
 /* ✅ Responsive Design */
 
 /* Tablets & medium screens */
+
 @media (max-width: 1024px) {
   .tracker-container {
     gap: 20px;
     padding: 20px;
   }
-
   .sidebar {
     width: 35%;
   }
-
   .map-container {
     width: 60%;
     height: 75vh;
@@ -185,18 +198,17 @@
 }
 
 /* Mobile Devices - Map on Top */
+
 @media (max-width: 768px) {
   .tracker-container {
     flex-direction: column-reverse;
     align-items: center;
     gap: 25px;
   }
-
   .sidebar,
   .map-container {
     width: 90%;
   }
-
   .map-container {
     height: 60vh;
     min-height: 300px;
@@ -204,25 +216,22 @@
 }
 
 /* Extra small mobile screens */
+
 @media (max-width: 480px) {
   .tracker-container {
     padding: 15px;
   }
-
   .sidebar,
   .map-container {
     width: 100%;
   }
-
   .map-container {
     height: 50vh;
     min-height: 250px;
   }
-
   .bus-card {
     padding: 10px;
   }
-
   .search-box input {
     font-size: 13px;
     height: 38px;
@@ -230,6 +239,7 @@
 }
 
 /* Statistics */
+
 .stats-container {
   background: white;
   border-radius: 12px;
@@ -261,6 +271,7 @@
 }
 
 /* Location Badge */
+
 .location-badge {
   display: inline-block;
   background: #e9ecef;
@@ -277,6 +288,7 @@
 }
 
 /* Map Controls */
+
 .map-controls {
   position: absolute;
   top: 10px;
@@ -291,7 +303,7 @@
   padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .refresh-btn:hover {
@@ -299,6 +311,7 @@
 }
 
 /* Bus Card Selection */
+
 .bus-card {
   transition: all 0.3s;
   cursor: pointer;
@@ -320,7 +333,10 @@
 }
 
 /* Loading and Error States */
-.loading-message, .error-message, .no-buses {
+
+.loading-message,
+.error-message,
+.no-buses {
   text-align: center;
   padding: 20px;
   color: #666;
@@ -335,6 +351,7 @@
 }
 
 /* Bus Card Selection */
+
 .bus-card {
   transition: all 0.3s;
   cursor: pointer;
@@ -366,6 +383,7 @@
 }
 
 /* Selected marker highlight */
+
 .bus-marker-container.selected {
   filter: drop-shadow(0 0 8px rgba(47, 114, 255, 0.8));
 }
