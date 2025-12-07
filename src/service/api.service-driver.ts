@@ -258,11 +258,10 @@ export interface Bus {
   currentLocation?: LocationData;
 }
 
-/* ========== MOCK DATA =========== */
 const MOCK_BUSES: Bus[] = [
-  { id: '1', number: '101', status: 'available', routeName: 'Ring Road' },
-  { id: '2', number: '205', status: 'active', routeName: 'Downtown' },
-  { id: '3', number: '310', status: 'out-of-service', routeName: 'Nasr City' }
+  { id: '1', number: '12', status: 'available', routeName: 'المعادي-Maadi' },
+  { id: '2', number: '7', status: 'active', routeName: 'السيدة زينب - Sayedah Zeinab'},
+  { id: '3', number: '23', status: 'out-of-service', routeName: 'المظلات - El‑Mozallat'}
 ];
 
 let localBuses: Bus[] = [...MOCK_BUSES];
@@ -274,7 +273,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  /* ========= GET BUSES ========= */
   getBuses(): Observable<{ buses: Bus[] }> {
     return this.http.get<{ buses: Bus[] }>(`${this.apiUrl}/buses`)
       .pipe(
@@ -285,7 +283,6 @@ export class ApiService {
       );
   }
 
-  /* ========= START TRIP ========= */
   startTrip(busId: string, driverId: string): Observable<{ success: boolean }> {
     return this.http.post<{ success: boolean }>(`${this.apiUrl}/start-trip`, {
       busId,
@@ -305,7 +302,6 @@ export class ApiService {
     );
   }
 
-  /* ========= END TRIP ========= */
   endTrip(busId: string): Observable<{ success: boolean }> {
     return this.http.post<{ success: boolean }>(`${this.apiUrl}/end-trip`, { busId })
       .pipe(
@@ -323,7 +319,6 @@ export class ApiService {
       );
   }
 
-  /* ========= UPDATE LOCATION ========= */
   updateLocation(busId: string, lat: number, lng: number, heading: number = 0): Observable<{ success: boolean }> {
     return this.http
       .post<{ success: boolean }>(`${this.apiUrl}/update-location`, {
@@ -355,7 +350,6 @@ export class ApiService {
       );
   }
 
-  /* ========= RECORD STATION ========= */
   recordStation(busId: string, stationName: string): Observable<{ success: boolean }> {
     return this.http.post<{ success: boolean }>(`${this.apiUrl}/record-station`, {
       busId,
@@ -383,7 +377,6 @@ export class ApiService {
     );
   }
 
-  /* ========= REPORT ISSUE ========= */
   reportIssue(busId: string, issueType: string, description: string): Observable<{ success: boolean }> {
     return this.http.post<{ success: boolean }>(`${this.apiUrl}/report-issue`, {
       busId,
@@ -403,7 +396,6 @@ export class ApiService {
     );
   }
 
-  /* ========= RESTORE BUS ========= */
   restoreBus(busId: string): Observable<{ success: boolean }> {
     return this.http.post<{ success: boolean }>(`${this.apiUrl}/restore-bus`, { busId })
       .pipe(

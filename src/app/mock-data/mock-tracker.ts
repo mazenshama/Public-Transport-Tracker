@@ -5,7 +5,7 @@ export const MOCK_BUSES: Bus[] = [
     id: '1',
     number: '12',
     status: 'active',
-    routeName: 'ramses-رمسيس',
+    routeName: 'المعادي-Maadi',
     currentLatitude: 30.060,
     currentLongitude: 31.233
   },
@@ -13,7 +13,7 @@ export const MOCK_BUSES: Bus[] = [
     id: '2',
     number: '23',
     status: 'active',
-    routeName: 'العجوزه-Agouza',
+    routeName: 'المظلات - El‑Mozallat',
     currentLatitude: 30.050,
     currentLongitude: 31.235
   },
@@ -21,7 +21,7 @@ export const MOCK_BUSES: Bus[] = [
     id: '3',
     number: '7',
     status: 'active',
-    routeName: 'التحرير-Tahrir',
+    routeName:  'السيدة زينب - Sayedah Zeinab',
     currentLatitude: 30.040,
     currentLongitude: 31.240
   }

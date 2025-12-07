@@ -205,10 +205,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // ================= BUSES (MOCK ONLY) =================
 
   async getBuses(): Promise<{ buses: Bus[] }> {
-    console.warn('Using MOCK DATA for buses ✅');
+    console.warn('Using MOCK DATA for buses ');
     return { buses: MOCK_BUSES };
   }
 
@@ -222,7 +221,7 @@ export class ApiService {
     };
 
     MOCK_BUSES.push(newBus);
-    console.warn('Bus added to MOCK ✅', newBus);
+    console.warn('Bus added to MOCK ', newBus);
 
     return { message: 'Bus added to mock data', bus: newBus };
   }
@@ -232,17 +231,16 @@ export class ApiService {
 
     if (index !== -1) {
       const removed = MOCK_BUSES.splice(index, 1);
-      console.warn('Bus removed from MOCK ✅', removed[0]);
+      console.warn('Bus removed from MOCK ', removed[0]);
       return { message: 'Bus removed from mock data' };
     }
 
     return { message: 'Bus not found in mock data' };
   }
 
- // ================= ROUTES (MOCK ONLY) =================
 
 async getRoutes(): Promise<{ routes: RouteModel[] }> {
-  console.warn('Using MOCK DATA for routes ✅');
+  console.warn('Using MOCK DATA for routes ');
   return { routes: MOCK_ROUTES };
 }
 
@@ -260,7 +258,7 @@ async createRoute(payload: Partial<RouteModel>): Promise<any> {
 
   MOCK_ROUTES.push(newRoute);
 
-  console.warn('Route added to MOCK ✅', newRoute);
+  console.warn('Route added to MOCK ', newRoute);
 
   return { message: 'Route added to mock data', route: newRoute };
 }
@@ -272,15 +270,45 @@ async deleteRoute(routeId: string): Promise<any> {
   if (index !== -1) {
     const removed = MOCK_ROUTES.splice(index, 1);
 
-    console.warn('Route removed from MOCK ✅', removed[0]);
+    console.warn('Route removed from MOCK ', removed[0]);
 
     return { message: 'Route removed from mock data' };
   }
 
   return { message: 'Route not found in mock data' };
 }
+async editBus(busId: string, payload: Partial<Bus>): Promise<any> {
+  const bus = MOCK_BUSES.find(b => b.id === busId);
+  if (!bus) {
+    return { message: 'Bus not found in mock data' };
+  }
 
-  // ================= CONTACTS =================
+  bus.number = payload.number ?? bus.number;
+  bus.capacity = payload.capacity ?? bus.capacity;
+  bus.routeName = payload.routeName ?? bus.routeName;
+  bus.status = payload.status ?? bus.status;
+
+  console.warn('Bus updated in MOCK ', bus);
+  return { message: 'Bus updated in mock data', bus };
+}
+
+async editRoute(routeId: string, payload: Partial<RouteModel>): Promise<any> {
+  const route = MOCK_ROUTES.find(r => r.id === routeId);
+  if (!route) {
+    return { message: 'Route not found in mock data' };
+  }
+
+  route.busNumber = payload.busNumber ?? route.busNumber;
+  route.routeName = payload.routeName ?? route.routeName;
+  route.stops = payload.stops ?? route.stops;
+  route.startTime = payload.startTime ?? route.startTime;
+  route.endTime = payload.endTime ?? route.endTime;
+  route.frequency = payload.frequency ?? route.frequency;
+
+  console.warn('Route updated in MOCK ', route);
+  return { message: 'Route updated in mock data', route };
+}
+
 
   async getContacts(): Promise<{ contacts: Contact[] }> {
     try {
@@ -296,7 +324,6 @@ async deleteRoute(routeId: string): Promise<any> {
     }
   }
 
-  // ================= TRACKING =================
 
   async getAllTracking(): Promise<{ tracking: Tracking[] }> {
     try {

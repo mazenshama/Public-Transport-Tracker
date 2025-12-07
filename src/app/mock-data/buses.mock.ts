@@ -3,23 +3,23 @@ import { Bus } from '../../service/api.service-admin';
 export const MOCK_BUSES: Bus[] = [
   {
     id: '1',
-    number: '12A',
+    number: '12',
     capacity: 50,
-    routeName: 'El Haram - Dokki',
+    routeName: 'المعادي-Maadi',
     status: 'active'
   },
   {
     id: '2',
-    number: '33B',
+    number: '23',
     capacity: 40,
-    routeName: 'Nasr City - Maadi',
+    routeName: 'المظلات - El‑Mozallat',
     status: 'inactive'
   },
   {
     id: '3',
-    number: '77X',
+    number: '7',
     capacity: 60,
-    routeName: 'Giza - Downtown',
+    routeName: 'السيدة زينب - Sayedah Zeinab',
     status: 'available'
   }
 ];

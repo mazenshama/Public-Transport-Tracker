@@ -62,7 +62,7 @@ export class AdminDashboardComponent implements OnInit {
       this.updateStats();
     } catch (error) {
       console.error('Error initializing admin dashboard:', error);
-     
+
       this.buses = [];
       this.routes = [];
       this.contacts = [];
@@ -89,7 +89,6 @@ export class AdminDashboardComponent implements OnInit {
     try {
       const response = await this.api.createBus(this.newBus);
       if (response?.success) {
-        // Reload buses from server
         const res = await this.api.getBuses();
         this.buses = res.buses;
         this.newBus = { number: '', capacity: 0, routeName: '', status: 'active' };
@@ -112,7 +111,6 @@ export class AdminDashboardComponent implements OnInit {
     try {
       const response = await this.api.deleteBus(busId);
       if (response?.success) {
-        // Reload buses from server
         const res = await this.api.getBuses();
         this.buses = res.buses;
         this.updateStats();
@@ -135,7 +133,6 @@ export class AdminDashboardComponent implements OnInit {
     try {
       const response = await this.api.createRoute({ ...this.newRoute, stops });
       if (response?.success) {
-        // Reload routes from server
         const res = await this.api.getRoutes();
         this.routes = res.routes;
         this.newRoute = { busNumber: '', routeName: '', stops: '', startTime: '', endTime: '', frequency: '' };
@@ -158,7 +155,6 @@ export class AdminDashboardComponent implements OnInit {
     try {
       const response = await this.api.deleteRoute(routeId);
       if (response?.success) {
-        // Reload routes from server
         const res = await this.api.getRoutes();
         this.routes = res.routes;
         this.updateStats();
