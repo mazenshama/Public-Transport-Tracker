@@ -24,7 +24,7 @@
             }
         </div> -->
 
-        
+
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             @for (stat of [ { label:'Total Buses', value: stats.totalBuses, icon:'bi-truck' }, { label:'Active Buses', value: stats.activeBuses, icon:'bi-graph-up' }, { label:'Total Routes', value: stats.totalRoutes, icon:'bi-signpost-split' }, { label:'Messages',
@@ -225,15 +225,19 @@
                 <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Bus Number" [(ngModel)]="newRoute.busNumber" />
                 <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Route Name" [(ngModel)]="newRoute.routeName" />
                 <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Stops (comma separated)" [(ngModel)]="newRoute.stops" />
+
                 <div class="grid grid-cols-2 gap-4">
-                    <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Start Time" [(ngModel)]="newRoute.startTime" />
-                    <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="End Time" [(ngModel)]="newRoute.endTime" />
+                    <input type="time" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Start Time" [(ngModel)]="newRoute.startTime" />
+                    <input type="time" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="End Time" [(ngModel)]="newRoute.endTime" />
                 </div>
+
                 <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="Frequency" [(ngModel)]="newRoute.frequency" />
+
                 <button (click)="addRoute()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
-          Add
-        </button>
+        Add
+    </button>
             </div>
+
         </div>
     </div>
     }

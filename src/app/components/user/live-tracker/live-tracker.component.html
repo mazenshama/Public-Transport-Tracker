@@ -27,7 +27,7 @@
                 <p class="bus-title">Bus {{ bus.number }}</p>
                 <p class="bus-desc">{{ getBusDescription(bus) }}</p>
                 <span *ngIf="hasLocation(bus)" class="location-badge" [class.active]="bus.status === 'active'">
-          {{ bus.status === "active" ? "📍 Live Location" : "📍 Location" }}
+          {{ bus.status === "active" ? " Live Location" : " Location" }}
         </span>
             </div>
         </div>
