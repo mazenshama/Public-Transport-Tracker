@@ -34,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      // Load all data in parallel for better performance
+      // Load all data
       const [busesData, routesData, contactsData, trackingData] = await Promise.all([
         this.api.getBuses().catch(err => {
           console.error('Error loading buses:', err);
@@ -62,7 +62,7 @@ export class AdminDashboardComponent implements OnInit {
       this.updateStats();
     } catch (error) {
       console.error('Error initializing admin dashboard:', error);
-      // Initialize with empty arrays instead of mock data
+     
       this.buses = [];
       this.routes = [];
       this.contacts = [];
