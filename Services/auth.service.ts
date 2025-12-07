@@ -165,10 +165,79 @@
 //     localStorage.removeItem('user');
 //   }
 // }
-import { HttpClient } from "@angular/common/http";
+//..................................................................................................................
+// import { HttpClient } from "@angular/common/http";
+// import { Injectable } from "@angular/core";
+// import { Observable, tap, BehaviorSubject } from 'rxjs';
+// import { environment } from '../src/environments/environment';
+
+// interface LoginRequest { email: string; password: string; }
+// interface RegisterRequest { name: string; email: string; password: string; phone?: string; role: string; }
+// interface AuthResponse { success: boolean; token?: string; user?: { id: string; name: string; email: string; role: string }; message?: string }
+
+// @Injectable({ providedIn: 'root' })
+// export class AuthServices {
+
+//   private apiBaseUrl = `${environment.apiBaseUrl}`;
+
+//   private userSubject = new BehaviorSubject<any>(null);
+//   user$ = this.userSubject.asObservable();
+
+//   constructor(private http: HttpClient) {
+//     const savedUser = this.getUser();
+//     if (savedUser) this.userSubject.next(savedUser);
+//   }
+
+//   serLogIn(payload: LoginRequest): Observable<AuthResponse> {
+//     return this.http.post<AuthResponse>(`${this.apiBaseUrl}/auth/login`, payload)
+//       .pipe(
+//         tap((res: AuthResponse) => {
+//           if (res.success && res.token && res.user) {
+//             localStorage.setItem('token', res.token);
+//             localStorage.setItem('user', JSON.stringify(res.user));
+//             this.userSubject.next(res.user);
+//           }
+//         })
+//       );
+//   }
+
+//   serSignUp(payload: RegisterRequest): Observable<AuthResponse> {
+//     return this.http.post<AuthResponse>(`${this.apiBaseUrl}/auth/register`, payload)
+//       .pipe(
+//         tap((res: AuthResponse) => {
+//           if (res.success && res.token && res.user) {
+//             localStorage.setItem('token', res.token);
+//             localStorage.setItem('user', JSON.stringify(res.user));
+//             this.userSubject.next(res.user);
+//           }
+//         })
+//       );
+//   }
+
+//   getToken(): string | null { return localStorage.getItem('token'); }
+
+//   getUser() {
+//     const userStr = localStorage.getItem('user');
+//     return userStr ? JSON.parse(userStr) : null;
+//   }
+
+//   getRole(): string | null {
+//     return this.getUser()?.role ?? null;
+//   }
+
+//   isLoggedIn(): boolean {
+//     return !!this.getToken();
+//   }
+
+//   logout(): void {
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('user');
+//     this.userSubject.next(null);
+//   }
+// }
+
 import { Injectable } from "@angular/core";
 import { Observable, tap, BehaviorSubject } from 'rxjs';
-import { environment } from '../src/environments/environment';
 
 interface LoginRequest { email: string; password: string; }
 interface RegisterRequest { name: string; email: string; password: string; phone?: string; role: string; }
@@ -177,42 +246,83 @@ interface AuthResponse { success: boolean; token?: string; user?: { id: string; 
 @Injectable({ providedIn: 'root' })
 export class AuthServices {
 
-  private apiBaseUrl = `${environment.apiBaseUrl}`;
+  // Fake user for local login
+  private fakeUser = {
+    id: "1",
+    name: "Mazen Admin",
+    email: "admin@test.com",
+    password: "123456",
+    role: "admin"
+  };
 
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor() {
     const savedUser = this.getUser();
     if (savedUser) this.userSubject.next(savedUser);
   }
 
+  // ===================== LOCAL LOGIN =====================
   serLogIn(payload: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiBaseUrl}/auth/login`, payload)
-      .pipe(
-        tap((res: AuthResponse) => {
-          if (res.success && res.token && res.user) {
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('user', JSON.stringify(res.user));
-            this.userSubject.next(res.user);
+
+    return new Observable<AuthResponse>(observer => {
+
+      if (payload.email === this.fakeUser.email && payload.password === this.fakeUser.password) {
+
+        const response: AuthResponse = {
+          success: true,
+          token: "LOCAL_FAKE_TOKEN_123",
+          user: {
+            id: this.fakeUser.id,
+            name: this.fakeUser.name,
+            email: this.fakeUser.email,
+            role: this.fakeUser.role
           }
-        })
-      );
+        };
+
+        localStorage.setItem("token", response.token!);
+        localStorage.setItem("user", JSON.stringify(response.user));
+        this.userSubject.next(response.user);
+
+        observer.next(response);
+        observer.complete();
+
+      } else {
+        observer.next({ success: false, message: "Invalid email or password" });
+        observer.complete();
+      }
+
+    });
   }
 
+  // ===================== LOCAL SIGNUP =====================
   serSignUp(payload: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiBaseUrl}/auth/register`, payload)
-      .pipe(
-        tap((res: AuthResponse) => {
-          if (res.success && res.token && res.user) {
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('user', JSON.stringify(res.user));
-            this.userSubject.next(res.user);
-          }
-        })
-      );
+    return new Observable<AuthResponse>(observer => {
+
+      const newUser = {
+        id: "2",
+        name: payload.name,
+        email: payload.email,
+        role: payload.role
+      };
+
+      const response: AuthResponse = {
+        success: true,
+        token: "LOCAL_REGISTER_TOKEN",
+        user: newUser
+      };
+
+      localStorage.setItem("token", response.token!);
+      localStorage.setItem("user", JSON.stringify(response.user));
+      this.userSubject.next(response.user);
+
+      observer.next(response);
+      observer.complete();
+    });
   }
 
+  // ===================== USER DATA =====================
   getToken(): string | null { return localStorage.getItem('token'); }
 
   getUser() {
